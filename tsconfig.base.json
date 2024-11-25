@@ -1,0 +1,42 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "esnext",
+    "lib": ["ES2022", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "~aspire/common/auth": ["modules/common/auth/src/index.ts"],
+      "~aspire/common/auth/server": ["modules/common/auth/src/server.ts"],
+      "~aspire/external/supabase": [
+        "modules/external/supabase/src/index.ts"
+      ],
+      "~aspire/external/supabase/server": [
+        "modules/external/supabase/src/server.ts"
+      ],
+      "~aspire/shared/icons": ["modules/shared/icons/src/index.ts"],
+      "~aspire/shared/icons/server": ["modules/shared/icons/src/server.ts"],
+      "~aspire/shared/ui": ["modules/shared/ui/src/index.ts"],
+      "~aspire/shared/ui/server": ["modules/shared/ui/src/server.ts"],
+      "~aspire/shared/utils": ["./modules/shared/utils/src/index.ts"],
+      "~aspire/shared/utils/server": ["./modules/shared/utils/src/server.ts"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp",
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "dist/aspire/**/*"
+  ]
+}

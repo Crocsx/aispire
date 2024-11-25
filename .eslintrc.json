@@ -1,0 +1,102 @@
+{
+  "root": true,
+  "ignorePatterns": ["!**/*", ".next/**/*"],
+  "plugins": ["@nx", "unused-imports"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": ["src"],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ],
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "pathGroups": [
+              {
+                "pattern": "{react,react/**/*,react-*,react-*/**/*}",
+                "group": "builtin",
+                "position": "before"
+              },
+              {
+                "pattern": "~aspire/**",
+                "group": "internal",
+                "position": "after"
+              },
+              {
+                "pattern": "src/assets/**",
+                "group": "internal",
+                "position": "after"
+              },
+              {
+                "pattern": "src/**",
+                "group": "internal",
+                "position": "after"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": [
+              "react",
+              "react/**/*",
+              "react-*",
+              "react-*/**/*"
+            ],
+            "groups": [
+              ["builtin", "external", "internal"],
+              ["parent", "sibling", "index"]
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
+  "extends": [
+    "plugin:@nx/react-typescript",
+    "next",
+    "next/core-web-vitals",
+    "./.eslintrc.base.json"
+  ]
+}

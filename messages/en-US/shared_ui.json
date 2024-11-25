@@ -1,0 +1,14 @@
+{
+  "shared:ui": {
+    "LanguageSelector": {
+      "language": "{language, select,other {Unknown}en_US {English}ja_JP{日本語}it_IT{Italiano}}"
+    },
+    "ToggleableForm": {
+      "button": {
+        "apply": "Apply",
+        "edit": "Edit",
+        "cancel": "Cancel"
+      }
+    }
+  }
+}

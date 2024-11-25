@@ -1,0 +1,20 @@
+{
+  "name": "shared-icons",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/shared/icons/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project shared-icons --web",
+  "targets": {
+    "svg:generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx @svgr/cli -- modules/shared/icons/src/lib/client/svg/sources"
+          }
+        ]
+      }
+    }
+  }
+}

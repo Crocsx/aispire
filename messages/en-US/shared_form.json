@@ -1,0 +1,30 @@
+{
+  "shared:form": {
+    "validation": {
+      "error": {
+        "required": "{field} is required",
+        "invalid": "{field} is invalid",
+        "invalidDate": "{field} is an invalid date",
+        "min": "{field} must be greater than {min}",
+        "minEqual": "{field} must be equal or greater than {min}",
+        "max": "{field} must be lower than {max}",
+        "maxEqual": "{field} must be equal or lower than {max}",
+        "fileType": "'Invalid file type. Only {types} are allowed",
+        "minMax": "{field} must be between {min} to {max}",
+        "charEqual": "{field} must contain exactly {value} characters",
+        "charMin": "{field} must be at least {min} characters",
+        "charMax": "{field} must be at most {max} characters",
+        "url": "{field} is not a valid URL",
+        "notMatch": "{field1} and {field2} do not match",
+        "passwordRules": "{field} must be at least 8 characters and include a number, capital letter and special character (!@＃$％^&)",
+        "noWhitespace": "{field} should contain only letters, digits and '-' or '_'",
+        "noSpecialCharacter": "{field} should only contain letters and numbers",
+        "integer": "{field} must be an integer",
+        "numeric": "{field} must be numeric",
+        "before": "{field1} must be before {field2}",
+        "after": "{field1} must be after {field2}",
+        "mustAccept": "You must accept {field}"
+      }
+    }
+  }
+}

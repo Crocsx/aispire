@@ -1,0 +1,47 @@
+{
+  "app:settings": {
+    "UserSettings": {
+      "form": {
+        "section": {
+          "personalInformation": "Personal Information",
+          "language": "Language"
+        },
+        "field": {
+          "avatar": {
+            "label": "Avatar",
+            "placeholder": "Change Avatar"
+          },
+          "email": {
+            "placeholder": "user@aspire.com",
+            "label": "Email"
+          },
+          "currentPassword": {
+            "placeholder": "Current Password",
+            "label": "Current Password"
+          },
+          "newPassword": {
+            "placeholder": "New Password",
+            "label": "New Password"
+          },
+          "confirmationPassword": {
+            "placeholder": "Confirmation Password",
+            "label": "Confirmation Password"
+          },
+          "locale": {
+            "placeholder": "Display Language",
+            "label": "Display Language"
+          },
+          "timezone": {
+            "placeholder": "Timezone",
+            "label": "Timezone"
+          }
+        },
+        "error": {
+          "title": "Authentication Failed",
+          "defaultMessage": "We couldn't sign you in, please try again later"
+        },
+        "submit": "Save Changes"
+      }
+    }
+  }
+}

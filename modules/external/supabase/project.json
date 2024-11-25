@@ -1,0 +1,9 @@
+{
+  "name": "external-supabase",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/external/supabase/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project external-supabase --web",
+  "targets": {}
+}

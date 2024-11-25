@@ -1,0 +1,33 @@
+{
+  "external:supabase": {
+    "error": {
+      "default": "Authentication API encountered an unexpected error",
+      "anonymous_provider_disabled": "Anonymous sign-ins are disabled.",
+      "email_address_not_authorized": "Email sending is not allowed for this address as your project is using the default SMTP service. Set up a custom SMTP provider.",
+      "email_exists": "Email address already exists in the system.",
+      "email_not_confirmed": "Signing in is not allowed for this user as the email address is not confirmed.",
+      "invalid_credentials": "Login credentials or grant type not recognized.",
+      "invalid_confirmation_token": "Confirmation token is not provided or expired.",
+      "invalid_or_expired_reset_password": "Reset Password Link has expired or is invalid. Please request a new one.",
+      "invite_not_found": "Invite is expired or already used.",
+      "mfa_challenge_expired": "MFA challenge expired. Request a new challenge.",
+      "mfa_verification_failed": "MFA challenge verification failed -- incorrect TOTP code.",
+      "no_authorization": "This request requires authorization.",
+      "otp_disabled": "OTP sign-in is disabled. Check server configuration.",
+      "otp_expired": "OTP code for this sign-in has expired. Ask the user to sign in again.",
+      "over_email_send_rate_limit": "Too many emails sent to this address. Wait before trying again.",
+      "over_request_rate_limit": "Too many requests from this client. Try again in a few minutes.",
+      "phone_exists": "Phone number already exists in the system.",
+      "phone_not_confirmed": "Phone number is not confirmed.",
+      "provider_disabled": "OAuth provider is disabled. Check configuration.",
+      "reauthentication_needed": "Reauthentication required. Please log in again.",
+      "session_not_found": "Session no longer exists. Please sign in again.",
+      "signup_disabled": "Signups are disabled on this server.",
+      "unexpected_failure": "Service error occurred. Please try again later.",
+      "user_already_exists": "User already exists with this information.",
+      "user_banned": "User is banned. No further requests allowed until the ban is lifted.",
+      "user_not_found": "User does not exist.",
+      "weak_password": "Password does not meet strength requirements."
+    }
+  }
+}

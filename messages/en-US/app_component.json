@@ -1,0 +1,18 @@
+{
+  "app:component": {
+    "Header": {
+      "title": "Aspire",
+      "navigation": {
+        "login": "Login"
+      },
+      "userMenu": {
+        "logout": "Logout",
+        "settings": "Settings"
+      },
+      "language": "{language, select,other {Unknown}en_US {English}ja_JP{日本語}it_IT{Italiano}}"
+    },
+    "Footer": {
+      "copyright": "© Copyright {date} Ythlium. All rights reserved."
+    }
+  }
+}

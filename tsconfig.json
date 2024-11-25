@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "types": ["jest", "node"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    ".next/types/**/*.ts",
+    "dist/aspire/.next/types/**/*.ts",
+    "next-env.d.ts",
+    "modules/common/auth/src/lib/client/index.ts",
+  ],
+  "extends": "./tsconfig.base.json"
+}
