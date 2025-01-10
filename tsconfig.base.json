@@ -15,20 +15,24 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "~aspire/common/auth": ["modules/common/auth/src/index.ts"],
-      "~aspire/common/auth/server": ["modules/common/auth/src/server.ts"],
-      "~aspire/external/supabase": [
-        "modules/external/supabase/src/index.ts"
+      "~aispire/external/openai": ["modules/external/openai/src/index.ts"],
+      "~aispire/external/openai/server": [
+        "modules/external/openai/src/server.ts"
       ],
-      "~aspire/external/supabase/server": [
+      "~aispire/common/auth": ["modules/common/auth/src/index.ts"],
+      "~aispire/common/auth/server": ["modules/common/auth/src/server.ts"],
+      "~aispire/external/supabase": ["modules/external/supabase/src/index.ts"],
+      "~aispire/external/supabase/server": [
         "modules/external/supabase/src/server.ts"
       ],
-      "~aspire/shared/icons": ["modules/shared/icons/src/index.ts"],
-      "~aspire/shared/icons/server": ["modules/shared/icons/src/server.ts"],
-      "~aspire/shared/ui": ["modules/shared/ui/src/index.ts"],
-      "~aspire/shared/ui/server": ["modules/shared/ui/src/server.ts"],
-      "~aspire/shared/utils": ["./modules/shared/utils/src/index.ts"],
-      "~aspire/shared/utils/server": ["./modules/shared/utils/src/server.ts"]
+      "~aispire/shared/icons": ["modules/shared/icons/src/index.ts"],
+      "~aispire/shared/icons/server": ["modules/shared/icons/src/server.ts"],
+      "~aispire/shared/schema": ["modules/shared/schema/src/index.ts"],
+      "~aispire/shared/schema/server": ["modules/shared/schema/src/server.ts"],
+      "~aispire/shared/ui": ["modules/shared/ui/src/index.ts"],
+      "~aispire/shared/ui/server": ["modules/shared/ui/src/server.ts"],
+      "~aispire/shared/utils": ["./modules/shared/utils/src/index.ts"],
+      "~aispire/shared/utils/server": ["./modules/shared/utils/src/server.ts"]
     }
   },
   "exclude": [
@@ -37,6 +41,6 @@
     "jest.config.ts",
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
-    "dist/aspire/**/*"
+    "dist/aispire/**/*"
   ]
 }

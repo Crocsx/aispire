@@ -48,7 +48,7 @@
                 "position": "before"
               },
               {
-                "pattern": "~aspire/**",
+                "pattern": "~aispire/**",
                 "group": "internal",
                 "position": "after"
               },

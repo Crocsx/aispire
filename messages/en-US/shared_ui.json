@@ -9,6 +9,18 @@
         "edit": "Edit",
         "cancel": "Cancel"
       }
+    },
+    "Chat": {
+      "InputForm": {
+        "send": "Send",
+        "field": {
+          "label": "Message",
+          "placeholder": "Type your message..."
+        }
+      },
+      "MessageListEmpty": {
+        "noMessages": "No messages yet. Start by asking a question."
+      }
     }
   }
 }

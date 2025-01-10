@@ -1,7 +1,7 @@
 'use client';
 
-import { createClient } from '~aspire/external/supabase';
-import { ErrorUtils } from '~aspire/shared/utils';
+import { createClient } from '~aispire/external/supabase';
+import { ErrorUtils } from '~aispire/shared/utils';
 
 export const SignOutHandler = async () => {
   try {

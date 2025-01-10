@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { AuthContext, AuthContextType } from './auth-context';
 import { LoadingOverlay } from '@mantine/core';
-import { createClient } from '~aspire/external/supabase';
+import { createClient } from '~aispire/external/supabase';
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [initializing, setInitializing] = useState(true);

@@ -2,7 +2,7 @@ import fs from 'fs';
 import { getRequestConfig } from 'next-intl/server';
 import path from 'path';
 
-import { TimezoneUtils } from '~aspire/shared/utils';
+import { TimezoneUtils } from '~aispire/shared/utils';
 
 import { DEFAULT_LOCALE, Locale, LOCALES } from '../config';
 import { getUserLocale } from '../services';

@@ -1,5 +1,15 @@
 {
   "app:settings": {
+    "Shell": {
+      "title": "Settings",
+      "tabs": "{tab, select,other {Unknown}USER {User}GENERAL{General}STYLE{Style}}"
+    },
+    "StyleSettings": {
+      "title": "Style Settings"
+    },
+    "GeneralSettings": {
+      "title": "General Settings"
+    },
     "UserSettings": {
       "form": {
         "section": {
@@ -12,7 +22,7 @@
             "placeholder": "Change Avatar"
           },
           "email": {
-            "placeholder": "user@aspire.com",
+            "placeholder": "user@aispire.com",
             "label": "Email"
           },
           "currentPassword": {

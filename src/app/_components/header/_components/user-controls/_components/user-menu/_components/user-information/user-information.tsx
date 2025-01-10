@@ -3,7 +3,7 @@
 import { Group, Avatar, rem, Text } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 
-import { useAuthCtx } from '~aspire/common/auth';
+import { useAuthCtx } from '~aispire/common/auth';
 
 export const UserInformation = () => {
   const { self } = useAuthCtx();

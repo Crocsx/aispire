@@ -2,7 +2,7 @@ import { Flex, Button, Center, Paper } from '@mantine/core';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { StatusMessage } from '~aspire/shared/ui';
+import { StatusMessage } from '~aispire/shared/ui';
 
 import { PATHS } from 'src/config';
 
@@ -19,7 +19,7 @@ export default function NotFound() {
           title={t('title')}
         >
           <Flex justify="center" mt="md">
-            <Button component={Link} href={PATHS.home()} radius="xl">
+            <Button component={Link} href={PATHS.landing()} radius="xl">
               {t('back')}
             </Button>
           </Flex>

@@ -1,0 +1,9 @@
+{
+  "shared:schema": {
+    "enum": {
+      "department": "{department, select,other {unknown}ENGINEERING {Engineering}}",
+      "businessUnit": "{businessUnit, select,other {unknown}PRODUCT_DEVELOPMENT {Product Development}}",
+      "feedbackType": "{type, select,other {unknown}MANAGER_REVIEW {Manager Review}PEER_REVIEW {Peer Review}CLIENT_FEEDBACK {Client Feedback}}"
+    }
+  }
+}

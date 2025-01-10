@@ -1,6 +1,6 @@
 'use client';
-import { AuthRestricted } from '~aspire/common/auth';
-import { LanguagePicker } from '~aspire/shared/ui';
+import { AuthRestricted } from '~aispire/common/auth';
+import { LanguagePicker } from '~aispire/shared/ui';
 
 import { setUserLocale } from 'src/services';
 
