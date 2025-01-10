@@ -5,10 +5,9 @@ import {
   MantineColorsTuple,
   Modal,
   createTheme,
-  AppShell,
 } from '@mantine/core';
 
-import { AspireLogoIcon } from '~aspire/shared/icons';
+import { AIspireLogoIcon } from '~aispire/shared/icons';
 
 const primary: MantineColorsTuple = [
   '#F0F4F8', // Lightest Primary
@@ -46,10 +45,10 @@ export const themeBlue = createTheme({
         },
       },
     }),
-    AppShell: AppShell.extend({
+    /* AppShell: AppShell.extend({
       styles: {
         navbar: {
-          boxShadow: '2px 0px 4px rgba(0, 0, 0, 0.1)',
+           boxShadow: '2px 0px 4px rgba(0, 0, 0, 0.1)',
           zIndex: 100,
         },
         header: {
@@ -57,7 +56,7 @@ export const themeBlue = createTheme({
           zIndex: 101,
         },
       },
-    }),
+    }),*/
     Modal: Modal.extend({
       styles: {
         title: {
@@ -69,7 +68,7 @@ export const themeBlue = createTheme({
   },
   other: {
     logo: (props: SVGProps<SVGSVGElement>) => (
-      <AspireLogoIcon fill={primary[7]} {...props} />
+      <AIspireLogoIcon fill={primary[7]} {...props} />
     ),
   },
 });

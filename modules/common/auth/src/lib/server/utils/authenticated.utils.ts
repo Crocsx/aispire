@@ -1,4 +1,4 @@
-import { createClient } from '~aspire/external/supabase/server';
+import { createClient } from '~aispire/external/supabase/server';
 
 export const isAuthenticated = async () => {
   const client = await createClient();

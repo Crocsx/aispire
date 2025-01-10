@@ -1,24 +1,20 @@
-import { Button } from '@mantine/core';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import pick from 'lodash/pick';
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import { AuthRestricted } from '~aspire/common/auth';
+import { AuthRestricted } from '~aispire/common/auth';
 
-import { PATHS } from 'src/config';
-
-import { UserMenu, Notifications } from './_components';
+import { UserMenu } from './_components';
+import { Notifications } from '../../../notifications';
 
 export const UserControls = () => {
-  const t = useTranslations('app:component.Header');
+  const messages = useMessages();
+  const selectedMessages = pick(messages, ['app:core.Notifications']);
+
   return (
-    <AuthRestricted
-      fallback={
-        <Button component={Link} href={PATHS.auth.signIn()}>
-          {t('navigation.login')}
-        </Button>
-      }
-    >
-      <Notifications />
+    <AuthRestricted>
+      <NextIntlClientProvider messages={selectedMessages}>
+        <Notifications />
+      </NextIntlClientProvider>
       <UserMenu />
     </AuthRestricted>
   );

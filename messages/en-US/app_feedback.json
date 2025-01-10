@@ -1,0 +1,132 @@
+{
+  "app:feedback": {
+    "Shell": {
+      "title": "Feedback Hub",
+      "tabs": "{tab, select,other {Unknown}REFLECTION {Reflection}PEER_FEEDBACK {Peer Feedback}HISTORY {History}INSIGHTS {Insights}}"
+    },
+    "Feedback": {
+      "title": "Feedbacks",
+      "tabs": {
+        "reflectionTab": "Reflection",
+        "historyTab": "History"
+      },
+      "emptyMessageTemplate": {
+        "title": "Welcome to your Reflection Space",
+        "description": "This is where you can share your thoughts, feelings, and experiences. Start by typing a reflection below and our AI assistant will help guide your personal growth journey.",
+        "starter": "Today I want to reflect on ..."
+      }
+    },
+    "AddFeedbackForm": {
+      "title": "Add New Feedback",
+      "form": {
+        "error": {
+          "title": "Error",
+          "description": "Something went wrong"
+        },
+        "success": {
+          "title": "Thank you for your peer feedback!",
+          "description": "Your peer feedback has been submitted successfully. Providing constructive feedback helps create a supportive learning environment for everyone."
+        },
+        "field": {
+          "user": {
+            "label": "Feedback For",
+            "placeholder": "User who you want to provide feedback to"
+          },
+          "type": {
+            "label": "Source",
+            "placeholder": "Select the source of the feedback"
+          },
+          "content": {
+            "label": "Feedback",
+            "placeholder": "Ensure the feedback is constructive, supportive, and offers suggestions for improvement."
+          }
+        },
+        "submit": "Submit Feedback"
+      }
+    },
+    "FeedbackActivityTimeline": {
+      "title": "Past Reflections",
+      "timelineItem": {
+        "feedback": "Feedback",
+        "content": "Content",
+        "viewDetails": "View Details",
+        "yourReflection": "Your Reflection",
+        "aiFeedback": "AI Feedback",
+        "pointsImproved": "Points Improved",
+        "pointsToImprove": "Points to Improve",
+        "summary": "Summary",
+        "suggestion": "Suggestion",
+        "whatWentWell": "What went well",
+        "challengeFaced": "Challenge faced",
+        "focusForTomorrow": "Focus for tomorrow"
+      },
+      "timelineEmpty": {
+        "title": "No Reflections Yet",
+        "description": "Start by typing a reflection below and our AI assistant will help guide your personal growth journey.",
+        "action": "Start Reflection"
+      },
+      "emptyMessageTemplate": {
+        "title": "Welcome to your Reflection Space",
+        "description": "This is where you can share your thoughts, feelings, and experiences. Start by typing a reflection below and our AI assistant will help guide your personal growth journey.",
+        "starter": "Today I want to reflect on ..."
+      }
+    },
+    "ReflectionForm": {
+      "title": "Reflect on your day (Standard Reflection)",
+      "tooltip": "You can switch the reflection mode between 'AI Discussion' and 'Standard Reflection' in the user settings.",
+      "processing": {
+        "title": "Processing",
+        "description": "Please wait while we process your reflections."
+      },
+      "processed": {
+        "title": "Processed",
+        "description": "Your reflection has been processed. Here's your personalized feedback."
+      },
+      "insights": {
+        "keyInsights": "Key Insights",
+        "progressHighlights": "Progress Highlights",
+        "growthOpportunities": "Growth Opportunities"
+      },
+      "form": {
+        "error": {
+          "title": "Error",
+          "description": "Something went wrong"
+        },
+        "field": {
+          "success": {
+            "label": "What went well today?",
+            "placeholder": "Describe an achievement or positive experience."
+          },
+          "challenge": {
+            "label": "What challenge did you encounter today?",
+            "placeholder": "Explain the obstacle and how you managed it."
+          },
+          "focus": {
+            "label": "What’s one thing to improve tomorrow?",
+            "placeholder": "Set a goal or action step for tomorrow."
+          }
+        },
+        "submit": "Submit Reflection"
+      }
+    },
+    "FeedbackInsights": {
+      "noInsights": "No insights found",
+      "feedbackSummary": {
+        "title": "Feedback Summary"
+      },
+      "strengths": {
+        "title": "Strengths"
+      },
+      "improvements": {
+        "title": "Areas for Improvement"
+      },
+      "nextSteps": {
+        "title": "Next Steps"
+      },
+      "resources": {
+        "title": "Recommended Resources",
+        "accessButton": "Access Resource"
+      }
+    }
+  }
+}

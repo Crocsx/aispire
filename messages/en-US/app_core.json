@@ -3,11 +3,10 @@
     "Navbar": {
       "link": {
         "dashboard": "Dashboard",
-        "reflection": "Reflection",
-        "roadmap": "Road Map",
-        "feedback": "Feedback",
-        "values": "Values",
-        "help": "Help"
+        "feedbackHub": "Feedback Hub",
+        "growthZone": "Growth Zone",
+        "profileInsights": "Profile Insights",
+        "helpAndSupport": "Help & Support"
       }
     },
     "NotFound": {
@@ -17,6 +16,13 @@
     },
     "Loading": {
       "title": "Getting things ready..."
+    },
+    "Notifications": {
+      "empty": "No new notifications"
+    },
+    "SignInOverlay": {
+      "title": "Welcome to AIspire !",
+      "description": "Please connect your Google account to continue"
     }
   }
 }

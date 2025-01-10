@@ -1,0 +1,8 @@
+{
+  "app:insight": {
+    "Shell": {
+      "title": "Profile Insights",
+      "tabs": "{selectedTab, select,other {Unknown}VALUES_ALIGNMENT {Values Alignment}IMPROVEMENT {Improvement}SKILL_ANALYSIS {Skill Analysis}COMPARISON {Comparison}}"
+    }
+  }
+}

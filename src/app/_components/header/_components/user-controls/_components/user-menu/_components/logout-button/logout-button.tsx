@@ -5,6 +5,8 @@ import { useTransition } from 'react';
 import { MenuItem, rem } from '@mantine/core';
 import { IconLogout } from '@tabler/icons-react';
 
+import { PATHS } from 'src/config';
+
 import { SignOutHandler } from './_actions';
 
 export const LogoutButton = ({ text }: { text: string }) => {
@@ -17,6 +19,8 @@ export const LogoutButton = ({ text }: { text: string }) => {
       if (!success) {
         console.error('Sign out failed:', error);
       }
+      // Hard reload to clear the auth state
+      window.location.href = PATHS.landing();
     });
   };
 

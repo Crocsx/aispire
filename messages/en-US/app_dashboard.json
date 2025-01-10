@@ -1,0 +1,19 @@
+{
+  "app:dashboard": {
+    "PersonalOverview": {
+      "title": "Welcome back, {username}!",
+      "level": "Level {level}"
+    },
+    "NotFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist.",
+      "back": "Back to home"
+    },
+    "Loading": {
+      "title": "Getting things ready..."
+    },
+    "Notifications": {
+      "empty": "No new notifications"
+    }
+  }
+}

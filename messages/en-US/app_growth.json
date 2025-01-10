@@ -1,0 +1,8 @@
+{
+  "app:growth": {
+    "Shell": {
+      "title": "Growth Zone",
+      "tabs": "{tab, select,other {Unknown}COMPANY_VALUES {Company Values}CAREER_PROGRESSION {Career Progression}ACHIEVEMENTS {Achievements}LEARNING {Learning}PRACTICE {Practice Scenarios}}"
+    }
+  }
+}

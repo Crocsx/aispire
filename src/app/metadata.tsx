@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.vercel.com/ythlium/aspire'),
-  title: 'Aspire - Unlock Your Potential with AI-Powered Growth',
+  metadataBase: new URL('https://www.vercel.com/ythlium/aispire'),
+  title: 'AIspire - Unlock Your Potential with AI-Powered Growth',
   description:
-    'Aspire is an AI-driven platform designed to align personal growth with organizational values. Gain actionable insights, structured feedback, and personalized growth paths to thrive in your career and embrace AnyMind’s core values.',
+    'AIspire is an AI-driven platform designed to align personal growth with organizational values. Gain actionable insights, structured feedback, and personalized growth paths to thrive in your career and embrace AnyMind’s core values.',
   keywords:
     'Personal Growth, AI Feedback, Career Development, Structured Reflection, Growth Alignment, Feedback Utilization, Values-Driven Growth, Mentoring',
   robots: {
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
     nocache: false,
   },
   openGraph: {
-    title: 'Aspire',
+    title: 'AIspire',
     description:
-      'Aspire is an AI-driven platform designed to align personal growth with organizational values. Gain actionable insights, structured feedback, and personalized growth paths to thrive in your career and embrace AnyMind’s core values.',
-    url: 'https://www.vercel.com/ythlium/aspire',
-    siteName: 'Aspire',
+      'AIspire is an AI-driven platform designed to align personal growth with organizational values. Gain actionable insights, structured feedback, and personalized growth paths to thrive in your career and embrace AnyMind’s core values.',
+    url: 'https://www.vercel.com/ythlium/aispire',
+    siteName: 'AIspire',
     images: [
       {
         url: '/meta/ogp.png',

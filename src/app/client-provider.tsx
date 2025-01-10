@@ -2,7 +2,7 @@
 
 import { MantineProvider } from '@mantine/core';
 
-import { AuthProvider } from '~aspire/common/auth';
+import { AuthProvider } from '~aispire/common/auth';
 
 import { themeBlue } from 'src/assets/themes';
 

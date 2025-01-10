@@ -23,9 +23,9 @@
     "src/**/*.js",
     "src/**/*.jsx",
     ".next/types/**/*.ts",
-    "dist/aspire/.next/types/**/*.ts",
+    "dist/aispire/.next/types/**/*.ts",
     "next-env.d.ts",
-    "modules/common/auth/src/lib/client/index.ts",
+    "modules/common/auth/src/lib/client/index.ts"
   ],
   "extends": "./tsconfig.base.json"
 }

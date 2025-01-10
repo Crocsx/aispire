@@ -15,7 +15,7 @@ export const Logo = ({ title }: { title?: string }) => {
       <Group>
         <Flex justify="center" align="center">
           <Link
-            href={PATHS.home()}
+            href={PATHS.landing()}
             style={{ color: 'inherit', textDecoration: 'inherit' }}
           >
             <Flex align="flex-end" gap="xs">
