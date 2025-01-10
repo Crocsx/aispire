@@ -13,7 +13,7 @@ export const retrieveInsights = async () => {
     const supabase = await createClient();
 
     const { data, error } = await supabase
-      .from('user_feedback_insight')
+      .from('insights_recap')
       .select('*')
       .eq('user_id', (await supabase.auth.getUser()).data.user?.id)
       .order('created_at', { ascending: false })

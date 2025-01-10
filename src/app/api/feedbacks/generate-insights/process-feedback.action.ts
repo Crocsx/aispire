@@ -10,7 +10,7 @@ import { getOrCreateAssistant } from 'src/assistants';
 import {
   ASSISTANT_INSTRUCTIONS,
   generateInsightPrompt,
-} from './generate-insight.prompt';
+} from './_prompts/feedback-insight.prompt';
 
 export async function processUserFeedback(userId: string) {
   const supabase = await createClient();
@@ -26,7 +26,7 @@ export async function processUserFeedback(userId: string) {
   // Fetch last 12 months of data (limited to 30 records) for insight generation
   const [allReflectionsAndFeedbacks] = await Promise.all([
     supabase
-      .from('user_feedback_insight')
+      .from('insights_recap')
       .select('output_summary, type')
       .eq('from_user_id', userId)
       .gte('created_at', twelveMonthsAgo.toISOString())
@@ -84,9 +84,7 @@ export async function processUserFeedback(userId: string) {
   });
 
   // Save the insight
-  const { error } = await supabase
-    .from('user_feedback_insight')
-    .insert(insights);
+  const { error } = await supabase.from('insights_recap').insert(insights);
 
   if (error) throw error;
 

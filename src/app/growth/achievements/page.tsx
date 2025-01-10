@@ -1,64 +1,117 @@
+import {
+  Alert,
+  Badge,
+  Card,
+  Grid,
+  Paper,
+  Stack,
+  Text,
+  Title,
+  ThemeIcon,
+  GridCol,
+} from '@mantine/core';
+import { IconBulb, IconTrophy } from '@tabler/icons-react';
+
 export default function Page() {
+  const achievements = [
+    {
+      title: 'Communication Master',
+      description: 'Successfully completed 5 feedback sessions',
+      level: 'Gold',
+      color: 'yellow',
+      unlocked: true,
+    },
+    {
+      title: 'Team Player',
+      description: 'Contributed to 3 team projects',
+      level: 'Silver',
+      color: 'gray',
+      unlocked: true,
+    },
+    {
+      title: 'Growth Mindset',
+      description: 'Completed 10 learning resources',
+      level: 'Bronze',
+      color: 'orange',
+      unlocked: true,
+    },
+    {
+      title: 'Leadership Excellence',
+      description: 'Lead 5 team initiatives',
+      level: 'Locked',
+      color: 'gray',
+      unlocked: false,
+    },
+    {
+      title: 'Code Quality Champion',
+      description: 'Maintain 90% code quality score for 3 months',
+      level: 'Locked',
+      color: 'gray',
+      unlocked: false,
+    },
+    {
+      title: 'Innovation Pioneer',
+      description: 'Successfully implement 3 innovative solutions',
+      level: 'Locked',
+      color: 'gray',
+      unlocked: false,
+    },
+  ];
+
   return (
-    <div>
-      <h1>Achievement Milestones</h1>
-      <div
-        style={{
-          display: 'grid',
-          gap: '1rem',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-        }}
+    <Stack gap="xl">
+      <Alert
+        icon={<IconBulb size={16} />}
+        title="Demo Page"
+        color="red"
+        mb="xl"
       >
-        {/* Mock achievement cards */}
-        <div
-          style={{
-            padding: '1rem',
-            border: '1px solid #eee',
-            borderRadius: '8px',
-          }}
-        >
-          <h3>Communication Master</h3>
-          <p>Successfully completed 5 feedback sessions</p>
-          <div>🏆 Gold Badge</div>
-        </div>
+        This feature is not yet implemented. The idea would be to have some
+        achievement has a way to keep the user engaged with the practices,
+        improvement and other things like giving feedbacks and to provide a
+        leaderboard and achievement to users so they can maybe keep the
+        motivation up.
+      </Alert>
 
-        <div
-          style={{
-            padding: '1rem',
-            border: '1px solid #eee',
-            borderRadius: '8px',
-          }}
-        >
-          <h3>Team Player</h3>
-          <p>Contributed to 3 team projects</p>
-          <div>🥈 Silver Badge</div>
-        </div>
+      <Paper shadow="sm" p="md" withBorder>
+        <Stack gap="xs">
+          <Title order={4}>Your Achievements</Title>
+          <Text size="sm" c="dimmed">
+            Track your growth journey through earned achievements and badges
+          </Text>
+        </Stack>
+      </Paper>
 
-        <div
-          style={{
-            padding: '1rem',
-            border: '1px solid #eee',
-            borderRadius: '8px',
-          }}
-        >
-          <h3>Growth Mindset</h3>
-          <p>Completed 10 learning resources</p>
-          <div>🥉 Bronze Badge</div>
-        </div>
+      <Grid>
+        {achievements.map((achievement) => (
+          <GridCol key={achievement.title} span={{ base: 12, md: 4 }}>
+            <Card
+              shadow="sm"
+              p="lg"
+              radius="md"
+              withBorder
+              style={{ opacity: achievement.unlocked ? 1 : 0.5 }}
+            >
+              <Stack gap="md">
+                <ThemeIcon size={40} radius="md" color={achievement.color}>
+                  <IconTrophy size={24} />
+                </ThemeIcon>
 
-        <div
-          style={{
-            padding: '1rem',
-            border: '1px solid #eee',
-            borderRadius: '8px',
-            opacity: 0.5,
-          }}
-        >
-          <h3>Leadership Excellence</h3>
-          <p>Lead 5 team initiatives</p>
-          <div>🔒 Locked</div>
-        </div>
-      </div>
-    </div>
+                <Stack gap="xs">
+                  <Title order={4}>{achievement.title}</Title>
+                  <Text size="sm" c="dimmed">
+                    {achievement.description}
+                  </Text>
+                </Stack>
+
+                <Badge color={achievement.color} size="lg" variant="light">
+                  {achievement.level}
+                </Badge>
+              </Stack>
+            </Card>
+          </GridCol>
+        ))}
+      </Grid>
+    </Stack>
   );
 }

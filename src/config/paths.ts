@@ -18,10 +18,10 @@ export const PATHS = {
     root: () => '/growth',
   },
   insights: {
+    overview: () => '/insights/overview',
     values: () => '/insights/values',
     improvement: () => '/insights/improvements',
     skillAnalysis: () => '/insights/skills',
-    comparison: () => '/insights/comparison',
     root: () => '/insights',
   },
   help: () => '/help',
