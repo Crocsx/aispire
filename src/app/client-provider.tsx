@@ -12,7 +12,7 @@ export default function ClientProvider({
   children: React.ReactNode;
 }) {
   return (
-    <MantineProvider theme={themeBlue}>
+    <MantineProvider theme={themeBlue} defaultColorScheme="light">
       <AuthProvider>{children}</AuthProvider>
     </MantineProvider>
   );
