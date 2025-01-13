@@ -1,4 +1,4 @@
-import { Fieldset, Title, Textarea, Text } from '@mantine/core';
+import { Fieldset, Textarea, Text } from '@mantine/core';
 import { GetInputProps } from '@mantine/form/lib/types';
 import { useTranslations } from 'next-intl';
 
@@ -13,7 +13,7 @@ export const FormFields = ({
 }) => {
   const t = useTranslations('app:feedback.ReflectionForm');
   return (
-    <Fieldset legend={<Title order={4}>{t('title')}</Title>} variant="unstyled">
+    <Fieldset variant="unstyled">
       <Textarea
         {...getInputProps('success')}
         label={<Text>{t('form.field.success.label')}</Text>}

@@ -14,8 +14,6 @@ import {
   IconHeartFilled,
   IconBulb,
   IconChartBar,
-  IconUsers,
-  IconGlass,
   IconEyeglass,
 } from '@tabler/icons-react';
 import Link from 'next/link';

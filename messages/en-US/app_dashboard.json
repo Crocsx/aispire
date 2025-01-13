@@ -4,16 +4,32 @@
       "title": "Welcome back, {username}!",
       "level": "Level {level}"
     },
-    "NotFound": {
-      "title": "Page not found",
-      "description": "The page you are looking for does not exist.",
-      "back": "Back to home"
+    "reflectionReminder": {
+      "title": "Time for a Reflection",
+      "description": "It's been {days} days since your last reflection. Consider taking a moment to reflect on your recent experiences."
     },
-    "Loading": {
-      "title": "Getting things ready..."
+    "sections": {
+      "lastReflection": "Last Reflection",
+      "latestFeedback": "Latest Feedback",
+      "keyStrengths": "Key Strengths",
+      "valuesAlignment": "Values Alignment",
+      "strengths": "Key Strengths",
+      "values": "Core Values Assessment"
     },
-    "Notifications": {
-      "empty": "No new notifications"
+    "lastReflectionDate": "Last reflected on {date}",
+    "reflectionOverdue": "Overdue by {days} days",
+    "reflectionUpToDate": "You're up to date with your reflections",
+    "noReflectionYet": "No reflection recorded yet",
+    "from": "From {name}",
+    "noFeedbackYet": "No feedback received yet",
+    "noStrengthsYet": "No strengths identified yet",
+    "lastReflection": "Last reflection {time}",
+    "values": {
+      "be_open": "Be Open",
+      "be_bold": "Be Bold",
+      "stay_updated": "Stay Updated",
+      "achieve_together": "Achieve Together",
+      "move_faster": "Move Faster"
     }
   }
 }

@@ -1,2 +1,1 @@
-export * from './personal-overview';
-export * from './recent-feedback';
+export * from './dashboard-overview';

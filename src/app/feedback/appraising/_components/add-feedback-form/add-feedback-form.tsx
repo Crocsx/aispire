@@ -12,11 +12,9 @@ import {
   Button,
   Fieldset,
   Text,
-  Alert,
   Card,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { IconBulb } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import { FeedbackType } from '~aispire/shared/schema';

@@ -2,7 +2,7 @@
 
 import { Paper, Stack, Group, Button, Alert, Title, Text } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { IconInfoCircleFilled, IconBulb } from '@tabler/icons-react';
+import { IconBulb } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import { StatusAlert } from '~aispire/shared/ui';

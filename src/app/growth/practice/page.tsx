@@ -7,7 +7,6 @@ import {
   Stack,
   Text,
   Title,
-  ThemeIcon,
   UnstyledButton,
   Group,
   GridCol,

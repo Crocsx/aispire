@@ -3,6 +3,90 @@
     "Shell": {
       "title": "Profile Insights",
       "tabs": "{selectedTab, select,other {Unknown}OVERVIEW {Overview} VALUES_ALIGNMENT {Values Alignment}IMPROVEMENT {Improvement}SKILL_ANALYSIS {Skill Analysis}}"
+    },
+    "ImprovementsList": {
+      "title": "Improvements",
+      "subtitle": "Based on your profile assessment, here are some areas for improvement."
+    },
+    "InsightOverview": {
+      "profileSummary": {
+        "title": "Profile Summary"
+      },
+      "strengths": {
+        "title": "Key Strengths"
+      },
+      "improvements": {
+        "title": "Areas for Improvement"
+      },
+      "characteristics": {
+        "title": "Key Characteristics"
+      },
+      "criticalFocus": {
+        "title": "Critical Focus Areas"
+      }
+    },
+    "InsightSkills": {
+      "title": "Skills Assessment",
+      "subtitle": "Detailed analysis of your professional skills and their development over time.",
+      "rating": "Rating",
+      "categories": {
+        "communication": "Communication",
+        "problemSolving": "Problem Solving",
+        "collaboration": "Collaboration",
+        "leadership": "Leadership"
+      },
+      "skills": {
+        "clarity": {
+          "name": "Clarity"
+        },
+        "listening": {
+          "name": "Listening Skills"
+        },
+        "critical_thinking": {
+          "name": "Critical Thinking"
+        },
+        "creativity": {
+          "name": "Creativity"
+        },
+        "team_contribution": {
+          "name": "Team Contribution"
+        },
+        "conflict_resolution": {
+          "name": "Conflict Resolution"
+        },
+        "initiative": {
+          "name": "Initiative"
+        },
+        "motivation": {
+          "name": "Motivation"
+        }
+      }
+    },
+    "InsightValues": {
+      "title": "Core Values Assessment",
+      "subtitle": "Evaluate how well you embody our organizational values and identify areas for growth.",
+      "values": {
+        "beOpen": {
+          "name": "Be Open",
+          "description": "Embrace diversity, and express your thoughts openly while respecting other people's opinions."
+        },
+        "beBold": {
+          "name": "Be Bold",
+          "description": "Don't set limitations for yourself, keep on challenging for more."
+        },
+        "moveFaster": {
+          "name": "Move Faster",
+          "description": "Be faster than anyone else, and put your ideas into action quickly."
+        },
+        "stayUpdated": {
+          "name": "Stay Updated",
+          "description": "Update yourself with information to achieve better outcomes."
+        },
+        "achieveTogether": {
+          "name": "Achieve Together",
+          "description": "In all situations, always identify and run towards a common goal."
+        }
+      }
     }
   }
 }

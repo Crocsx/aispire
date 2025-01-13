@@ -38,4 +38,6 @@ Processing Guide:
     Highlight Areas for Improvement: Specific, actionable areas to develop.
     Ensure Respectful Language: Use supportive phrases like "could enhance," "might consider," or "could focus on."
     Check Completion: If essential elements are unclear or missing, mark incomplete: true.
+
+    Please in the output_summary and output_suggestion be precise and detailed, the more you return and explain to the user the better. This two things will also be used to recap and execute some more automation so I need to keep important information and details there and do not lose any information.
 `;

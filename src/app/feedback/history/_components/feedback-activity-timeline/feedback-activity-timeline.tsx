@@ -1,11 +1,11 @@
 import { Paper, Stack, Title, Timeline, Text } from '@mantine/core';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { retrieveFeedbackActivityItems } from './_actions';
 import { ActivityTimelineEmpty, ActivityTimelineItem } from './_components';
 
 export const FeedbackActivityTimeline = async () => {
-  const t = useTranslations('app:feedback.FeedbackActivityTimeline');
+  const t = await getTranslations('app:feedback.FeedbackActivityTimeline');
   const { data } = await retrieveFeedbackActivityItems();
 
   const timelineItems = data || [];
