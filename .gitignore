@@ -47,5 +47,6 @@ out
 
 firebase-key.json
 .env.*
+.env
 .vercel
 vite.config.*.timestamp*
