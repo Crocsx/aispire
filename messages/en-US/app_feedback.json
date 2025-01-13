@@ -17,7 +17,10 @@
       }
     },
     "AddFeedbackForm": {
-      "title": "Add New Feedback",
+      "paper": {
+        "title": "Add New Feedback",
+        "description": "Provide constructive feedback to help others grow and improve"
+      },
       "form": {
         "error": {
           "title": "Error",
@@ -45,7 +48,10 @@
       }
     },
     "FeedbackActivityTimeline": {
-      "title": "Past Reflections",
+      "paper": {
+        "title": "Past Reflections",
+        "description": "View your past reflections and see how you've grown over time."
+      },
       "timelineItem": {
         "feedback": "Feedback",
         "content": "Content",
@@ -72,7 +78,10 @@
       }
     },
     "ReflectionForm": {
-      "title": "Reflect on your day (Standard Reflection)",
+      "paper": {
+        "title": "Reflection Space",
+        "description": "Take a moment to reflect on your growth and experiences"
+      },
       "tooltip": "You can switch the reflection mode between 'AI Discussion' and 'Standard Reflection' in the user settings.",
       "processing": {
         "title": "Processing",
@@ -111,7 +120,7 @@
     },
     "FeedbackInsights": {
       "noInsights": "No insights found",
-      "feedbackSummary": {
+      "paper": {
         "title": "Feedback Summary"
       },
       "strengths": {

@@ -24,17 +24,17 @@ import { PATHS } from 'src/config';
 
 const GrowthTabs = {
   CAREER_PROGRESSION: 'CAREER_PROGRESSION',
-  ACHIEVEMENTS: 'ACHIEVEMENTS',
   LEARNING: 'LEARNING',
   PRACTICE: 'PRACTICE',
+  ACHIEVEMENTS: 'ACHIEVEMENTS',
 } as const;
 type GrowthTabs = (typeof GrowthTabs)[keyof typeof GrowthTabs];
 
 const GrowthTabsMapping = {
   [GrowthTabs.CAREER_PROGRESSION]: PATHS.growth.career(),
-  [GrowthTabs.ACHIEVEMENTS]: PATHS.growth.achievements(),
   [GrowthTabs.LEARNING]: PATHS.growth.learning(),
   [GrowthTabs.PRACTICE]: PATHS.growth.practice(),
+  [GrowthTabs.ACHIEVEMENTS]: PATHS.growth.achievements(),
 } as const;
 
 export default function Template({ children }: { children: React.ReactNode }) {
@@ -84,15 +84,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <TabsTab
             component={Link}
             // @ts-expect-error This is correct cause the component is a Link
-            href={GrowthTabsMapping[GrowthTabs.ACHIEVEMENTS]}
-            value={GrowthTabs.ACHIEVEMENTS}
-            leftSection={<IconTrophy size={16} />}
-          >
-            {t('tabs', { tab: GrowthTabs.ACHIEVEMENTS })}
-          </TabsTab>
-          <TabsTab
-            component={Link}
-            // @ts-expect-error This is correct cause the component is a Link
             href={GrowthTabsMapping[GrowthTabs.LEARNING]}
             value={GrowthTabs.LEARNING}
             leftSection={<IconBulb size={16} />}
@@ -107,6 +98,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
             leftSection={<IconTarget size={16} />}
           >
             {t('tabs', { tab: GrowthTabs.PRACTICE })}
+          </TabsTab>
+          <TabsTab
+            component={Link}
+            // @ts-expect-error This is correct cause the component is a Link
+            href={GrowthTabsMapping[GrowthTabs.ACHIEVEMENTS]}
+            value={GrowthTabs.ACHIEVEMENTS}
+            leftSection={<IconTrophy size={16} />}
+          >
+            {t('tabs', { tab: GrowthTabs.ACHIEVEMENTS })}
           </TabsTab>
         </TabsList>
         <Container size="lg" py="xl">

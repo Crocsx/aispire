@@ -1,8 +1,8 @@
 'use client';
 
-import { Paper, Stack, Group, Button, Alert } from '@mantine/core';
+import { Paper, Stack, Group, Button, Alert, Title, Text } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { IconInfoCircleFilled } from '@tabler/icons-react';
+import { IconBulb } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import { StatusAlert } from '~aispire/shared/ui';
@@ -29,16 +29,25 @@ export const ReflectionForm = () => {
   }
 
   return (
-    <>
-      <Alert
-        variant="light"
-        color="blue"
-        mb="md"
-        icon={<IconInfoCircleFilled />}
-      >
-        {t('tooltip')}
-      </Alert>
+    <Stack gap="xl">
       <Paper shadow="sm" p="md" withBorder>
+        <Stack gap="xs">
+          <Title order={4}>{t('paper.title')}</Title>
+          <Text size="sm" c="dimmed">
+            {t('paper.description')}
+          </Text>
+        </Stack>
+      </Paper>
+
+      <Paper shadow="sm" p="lg" withBorder>
+        <Alert
+          icon={<IconBulb size={16} />}
+          title="Demo Feature"
+          color="blue"
+          mb="md"
+        >
+          {t('tooltip')}
+        </Alert>
         <Stack gap="md">
           {error && (
             <StatusAlert
@@ -60,6 +69,6 @@ export const ReflectionForm = () => {
           </form>
         </Stack>
       </Paper>
-    </>
+    </Stack>
   );
 };

@@ -11,6 +11,8 @@ import {
   Group,
   Button,
   Fieldset,
+  Text,
+  Card,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useTranslations } from 'next-intl';
@@ -53,59 +55,69 @@ export const AddFeedbackForm = () => {
   }
 
   return (
-    <Paper withBorder p="md">
-      <Stack gap="md">
-        {error && (
-          <StatusAlert
-            status={'error'}
-            description={error || t('error.description')}
-            title={t('form.error.title')}
-          />
-        )}
-        <Title order={3}>{t('title')}</Title>
-        <form onSubmit={onSubmit(submit)}>
-          <Fieldset variant="unstyled">
-            <Select
-              {...getInputProps('to_user_id')}
-              label={t('form.field.user.label')}
-              placeholder={t('form.field.user.placeholder')}
-              mb="md"
-              data={users.map((user) => ({
-                label: user.email,
-                value: user.id,
-              }))}
-              required
+    <Stack gap="xl">
+      <Paper shadow="sm" p="md" withBorder>
+        <Stack gap="xs">
+          <Title order={4}>{t('paper.title')}</Title>
+          <Text size="sm" c="dimmed">
+            {t('paper.description')}
+          </Text>
+        </Stack>
+      </Paper>
+
+      <Card shadow="sm" p="lg" withBorder>
+        <Stack gap="md">
+          {error && (
+            <StatusAlert
+              status={'error'}
+              description={error || t('error.description')}
+              title={t('form.error.title')}
             />
-            <Select
-              {...getInputProps('type')}
-              label={t('form.field.type.label')}
-              placeholder={t('form.field.type.placeholder')}
-              data={Object.values(FeedbackType.Values).map((type) => ({
-                label: tSchema(`feedbackType`, { type }),
-                value: type,
-              }))}
-              mb="md"
-              required
-            />
-            <Textarea
-              {...getInputProps('content')}
-              label={t('form.field.content.label')}
-              placeholder={t('form.field.content.placeholder')}
-              minRows={4}
-              maxRows={8}
-              autosize
-              resize="vertical"
-              mb="md"
-              required
-            />
-          </Fieldset>
-          <Group justify="flex-end">
-            <Button type="submit" loading={isSubmitting}>
-              {t('form.submit')}
-            </Button>
-          </Group>
-        </form>
-      </Stack>
-    </Paper>
+          )}
+          <form onSubmit={onSubmit(submit)}>
+            <Fieldset variant="unstyled">
+              <Select
+                {...getInputProps('to_user_id')}
+                label={t('form.field.user.label')}
+                placeholder={t('form.field.user.placeholder')}
+                mb="md"
+                data={users.map((user) => ({
+                  label: user.email,
+                  value: user.id,
+                }))}
+                required
+              />
+              <Select
+                {...getInputProps('type')}
+                label={t('form.field.type.label')}
+                placeholder={t('form.field.type.placeholder')}
+                data={Object.values(FeedbackType.Values).map((type) => ({
+                  label: tSchema(`feedbackType`, { type }),
+                  value: type,
+                }))}
+                mb="md"
+                required
+              />
+              <Textarea
+                {...getInputProps('content')}
+                label={t('form.field.content.label')}
+                placeholder={t('form.field.content.placeholder')}
+                minRows={4}
+                maxRows={8}
+                autosize
+                resize="vertical"
+                mb="md"
+                required
+              />
+            </Fieldset>
+            <Group justify="flex-end">
+              <Button type="submit" loading={isSubmitting}>
+                {t('form.submit')}
+              </Button>
+            </Group>
+          </form>
+        </Stack>
+      </Card>
+    </Stack>
   );
 };

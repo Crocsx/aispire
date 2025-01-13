@@ -1,132 +1,156 @@
+import {
+  Alert,
+  Badge,
+  Card,
+  Grid,
+  Paper,
+  Stack,
+  Text,
+  Title,
+  UnstyledButton,
+  Group,
+  GridCol,
+} from '@mantine/core';
+import { IconBulb, IconPlayerPlay } from '@tabler/icons-react';
+
 export default function Page() {
+  const practiceAreas = [
+    {
+      title: 'Technical Leadership',
+      description: 'Practice leading technical discussions and decision-making',
+      scenarios: [
+        'Team Conflict Resolution',
+        'Project Planning Workshop',
+        'Technical Decision Making',
+      ],
+    },
+    {
+      title: 'System Design',
+      description: 'Work through real-world architecture challenges',
+      scenarios: [
+        'E-commerce Platform Design',
+        'Social Media Feed System',
+        'Real-time Chat Application',
+        'Payment Processing System',
+        'Video Streaming Service',
+      ],
+    },
+    {
+      title: 'Code Review',
+      description: 'Enhance your code review and feedback skills',
+      scenarios: [
+        'Performance Optimization',
+        'Security Assessment',
+        'Architecture Review',
+        'Testing Coverage Analysis',
+      ],
+    },
+  ];
+
+  const practiceHistory = [
+    {
+      title: 'System Design: Microservices Architecture',
+      completedDays: 2,
+      score: 85,
+    },
+    {
+      title: 'Technical Leadership: Team Planning',
+      completedDays: 5,
+      score: 90,
+    },
+  ];
+
   return (
-    <div>
-      <h1>Practice Scenarios</h1>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        {/* Current Focus Areas */}
-        <section>
-          <h2>Your Focus Areas</h2>
-          <div
-            style={{
-              display: 'grid',
-              gap: '1rem',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            }}
-          >
-            <div
-              style={{
-                padding: '1.5rem',
-                border: '1px solid #eee',
-                borderRadius: '8px',
-              }}
-            >
-              <h3>Technical Leadership</h3>
-              <p>Practice leading technical discussions and decision-making</p>
-              <div
-                style={{
-                  marginTop: '1rem',
-                  padding: '0.5rem',
-                  backgroundColor: '#f8f9fa',
-                  borderRadius: '4px',
-                }}
-              >
-                3 scenarios available
-              </div>
-            </div>
+    <Stack gap="xl">
+      <Alert
+        icon={<IconBulb size={16} />}
+        title="Demo Page"
+        color="red"
+        mb="xl"
+      >
+        This feature is not yet implemented. The idea would be based on current
+        area of improvement and lacking of the employee, to suggest practices
+        and scenario with AI or not to practice and improve their skills.
+      </Alert>
 
-            <div
-              style={{
-                padding: '1.5rem',
-                border: '1px solid #eee',
-                borderRadius: '8px',
-              }}
-            >
-              <h3>System Design</h3>
-              <p>Work through real-world architecture challenges</p>
-              <div
-                style={{
-                  marginTop: '1rem',
-                  padding: '0.5rem',
-                  backgroundColor: '#f8f9fa',
-                  borderRadius: '4px',
-                }}
-              >
-                5 scenarios available
-              </div>
-            </div>
+      <Paper shadow="sm" p="md" withBorder>
+        <Stack gap="xs">
+          <Title order={4}>Practice & Skill Development</Title>
+          <Text size="sm" c="dimmed">
+            Enhance your skills through interactive scenarios and practical
+            exercises tailored to your growth areas
+          </Text>
+        </Stack>
+      </Paper>
 
-            <div
-              style={{
-                padding: '1.5rem',
-                border: '1px solid #eee',
-                borderRadius: '8px',
-              }}
-            >
-              <h3>Code Review</h3>
-              <p>Enhance your code review and feedback skills</p>
-              <div
-                style={{
-                  marginTop: '1rem',
-                  padding: '0.5rem',
-                  backgroundColor: '#f8f9fa',
-                  borderRadius: '4px',
-                }}
-              >
-                4 scenarios available
-              </div>
-            </div>
-          </div>
-        </section>
+      <Grid>
+        <GridCol span={12}>
+          <Card shadow="sm" p="lg" withBorder>
+            <Stack gap="xl">
+              <Title order={4}>Your Focus Areas</Title>
 
-        {/* Recent Practice History */}
-        <section>
-          <h2>Recent Practice History</h2>
-          <div
-            style={{
-              padding: '1.5rem',
-              border: '1px solid #eee',
-              borderRadius: '8px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '1rem',
-                backgroundColor: '#f8f9fa',
-                borderRadius: '4px',
-              }}
-            >
-              <div>
-                <h4>System Design: Microservices Architecture</h4>
-                <div style={{ color: '#666' }}>Completed 2 days ago</div>
-              </div>
-              <div style={{ color: 'green' }}>Score: 85%</div>
-            </div>
+              <Grid>
+                {practiceAreas.map((area) => (
+                  <GridCol key={area.title} span={{ base: 12, md: 4 }}>
+                    <Card withBorder shadow="sm" p="lg">
+                      <Stack gap="md">
+                        <Group justify="space-between" align="flex-start">
+                          <Title order={4}>{area.title}</Title>
+                          <Badge color="blue">
+                            {area.scenarios.length} scenarios
+                          </Badge>
+                        </Group>
+                        <Text size="sm" c="dimmed">
+                          {area.description}
+                        </Text>
+                        <Stack gap="xs">
+                          {area.scenarios.map((scenario) => (
+                            <UnstyledButton
+                              key={scenario}
+                              style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                            >
+                              <Group>
+                                <IconPlayerPlay size={16} />
+                                <Text size="sm">{scenario}</Text>
+                              </Group>
+                            </UnstyledButton>
+                          ))}
+                        </Stack>
+                      </Stack>
+                    </Card>
+                  </GridCol>
+                ))}
+              </Grid>
+            </Stack>
+          </Card>
+        </GridCol>
 
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '1rem',
-                backgroundColor: '#f8f9fa',
-                borderRadius: '4px',
-              }}
-            >
-              <div>
-                <h4>Technical Leadership: Team Planning</h4>
-                <div style={{ color: '#666' }}>Completed 5 days ago</div>
-              </div>
-              <div style={{ color: 'green' }}>Score: 90%</div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
+        <GridCol span={12}>
+          <Card shadow="sm" p="lg" withBorder>
+            <Stack gap="xl">
+              <Title order={4}>Recent Practice History</Title>
+
+              <Stack gap="md">
+                {practiceHistory.map((history) => (
+                  <Card key={history.title} withBorder p="md">
+                    <Group justify="space-between" align="flex-start">
+                      <Stack gap={4}>
+                        <Title order={5}>{history.title}</Title>
+                        <Text size="sm" c="dimmed">
+                          Completed {history.completedDays} days ago
+                        </Text>
+                      </Stack>
+                      <Badge color="green" size="lg">
+                        Score: {history.score}%
+                      </Badge>
+                    </Group>
+                  </Card>
+                ))}
+              </Stack>
+            </Stack>
+          </Card>
+        </GridCol>
+      </Grid>
+    </Stack>
   );
 }

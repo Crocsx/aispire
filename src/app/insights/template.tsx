@@ -14,7 +14,7 @@ import {
   IconHeartFilled,
   IconBulb,
   IconChartBar,
-  IconUsers,
+  IconEyeglass,
 } from '@tabler/icons-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -23,18 +23,18 @@ import { useTranslations } from 'next-intl';
 import { PATHS } from 'src/config';
 
 const InsightTabs = {
+  OVERVIEW: 'OVERVIEW',
   VALUES_ALIGNMENT: 'VALUES_ALIGNMENT',
   IMPROVEMENT: 'IMPROVEMENT',
   SKILL_ANALYSIS: 'SKILL_ANALYSIS',
-  COMPARISON: 'COMPARISON',
 } as const;
 type InsightTabs = (typeof InsightTabs)[keyof typeof InsightTabs];
 
 const InsightTabsMapping = {
+  [InsightTabs.OVERVIEW]: PATHS.insights.overview(),
   [InsightTabs.VALUES_ALIGNMENT]: PATHS.insights.values(),
   [InsightTabs.IMPROVEMENT]: PATHS.insights.improvement(),
   [InsightTabs.SKILL_ANALYSIS]: PATHS.insights.skillAnalysis(),
-  [InsightTabs.COMPARISON]: PATHS.insights.comparison(),
 } as const;
 
 export default function Template({ children }: { children: React.ReactNode }) {
@@ -73,14 +73,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
         mx="-md"
       >
         <TabsList px="md">
+          {' '}
           <TabsTab
             component={Link}
             // @ts-expect-error This is correct cause the component is a Link
-            href={InsightTabsMapping[InsightTabs.VALUES_ALIGNMENT]}
-            value={InsightTabs.VALUES_ALIGNMENT}
-            leftSection={<IconHeartFilled size={16} />}
+            href={InsightTabsMapping[InsightTabs.OVERVIEW]}
+            value={InsightTabs.OVERVIEW}
+            leftSection={<IconEyeglass size={16} />}
           >
-            {t('tabs', { selectedTab: InsightTabs.VALUES_ALIGNMENT })}
+            {t('tabs', { selectedTab: InsightTabs.OVERVIEW })}
           </TabsTab>
           <TabsTab
             component={Link}
@@ -94,20 +95,20 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <TabsTab
             component={Link}
             // @ts-expect-error This is correct cause the component is a Link
+            href={InsightTabsMapping[InsightTabs.VALUES_ALIGNMENT]}
+            value={InsightTabs.VALUES_ALIGNMENT}
+            leftSection={<IconHeartFilled size={16} />}
+          >
+            {t('tabs', { selectedTab: InsightTabs.VALUES_ALIGNMENT })}
+          </TabsTab>
+          <TabsTab
+            component={Link}
+            // @ts-expect-error This is correct cause the component is a Link
             href={InsightTabsMapping[InsightTabs.SKILL_ANALYSIS]}
             value={InsightTabs.SKILL_ANALYSIS}
             leftSection={<IconChartBar size={16} />}
           >
             {t('tabs', { selectedTab: InsightTabs.SKILL_ANALYSIS })}
-          </TabsTab>
-          <TabsTab
-            component={Link}
-            // @ts-expect-error This is correct cause the component is a Link
-            href={InsightTabsMapping[InsightTabs.COMPARISON]}
-            value={InsightTabs.COMPARISON}
-            leftSection={<IconUsers size={16} />}
-          >
-            {t('tabs', { selectedTab: InsightTabs.COMPARISON })}
           </TabsTab>
         </TabsList>
         <Container size="lg" py="xl">
