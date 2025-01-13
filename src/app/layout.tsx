@@ -1,8 +1,6 @@
 import { ColorSchemeScript } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
-import pick from 'lodash/pick';
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+import { getLocale } from 'next-intl/server';
 
 import 'src/assets/styles/global.css';
 
@@ -19,8 +17,6 @@ export default async function RootLayout({
   children: React.ReactNode[];
 }) {
   const locale = await getLocale();
-  const messages = await getMessages();
-  const selectedMessages = pick(messages, ['app:core.SignInOverlay']);
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -29,13 +25,11 @@ export default async function RootLayout({
       </head>
       <body>
         <ClientProvider>
-          <NextIntlClientProvider messages={selectedMessages}>
-            <SignInOverlay>
-              <Shell header={<Header />} navbar={<Navbar />}>
-                {children}
-              </Shell>
-            </SignInOverlay>
-          </NextIntlClientProvider>
+          <SignInOverlay>
+            <Shell header={<Header />} navbar={<Navbar />}>
+              {children}
+            </Shell>
+          </SignInOverlay>
 
           <Notifications />
         </ClientProvider>
