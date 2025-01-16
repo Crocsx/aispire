@@ -1,21 +1,33 @@
 import { Card, Grid, GridCol, Paper, Stack, Text, Title } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
+import { StateCard } from 'src/app/_components';
+
 import { getSkills } from './_actions';
 
 export async function InsightSkills() {
   const t = await getTranslations('app:insight.InsightSkills');
   const result = await getSkills();
 
-  if (!result.success || !result.data) {
+  const skills = result.data;
+
+  if (!result.success || !skills) {
     return (
-      <Text c="red" size="sm">
-        Error loading skills: {result.error}
-      </Text>
+      <Stack gap="xl">
+        <Paper shadow="sm" p="md" withBorder>
+          <Stack gap="xs">
+            <Title order={4}>{t('title')}</Title>
+            <Text size="sm" c="dimmed">
+              {t('subtitle')}
+            </Text>
+          </Stack>
+        </Paper>
+        <Paper shadow="sm" p="md" withBorder>
+          <StateCard isEmpty={!skills} error={result.error} />
+        </Paper>
+      </Stack>
     );
   }
-
-  const skills = result.data;
 
   const skillCategories = [
     {

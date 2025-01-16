@@ -9,6 +9,8 @@
       "subtitle": "Based on your profile assessment, here are some areas for improvement."
     },
     "InsightOverview": {
+      "title": "Isnight Overview",
+      "subtitle": "Based on your profile assessment, here a summary of what are your assumed traits.",
       "profileSummary": {
         "title": "Profile Summary"
       },

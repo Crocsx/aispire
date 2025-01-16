@@ -185,22 +185,25 @@ export async function DashboardOverview() {
         </Card>
       </SimpleGrid>
 
-      <Grid>
-        {/* Values Radar Chart */}
-        <GridCol span={{ base: 12, md: 6 }}>
-          <Card withBorder padding="lg">
-            <Group justify="space-between" mb="xl">
-              <Title order={3}>{t('sections.valuesAlignment')}</Title>
-              <ThemeIcon size="xl" radius="md" variant="light" color="blue">
-                <IconChartRadar size={28} />
-              </ThemeIcon>
-            </Group>
-            <Paper p="md">
-              <ValuesRadarChart data={valuesData} />
-            </Paper>
-          </Card>
-        </GridCol>
-      </Grid>
+      {valuesData.length > 0 && (
+        <Grid>
+          {/* Values Radar Chart */}
+          <GridCol span={{ base: 12, md: 6 }}>
+            <Card withBorder padding="lg">
+              <Group justify="space-between" mb="xl">
+                <Title order={3}>{t('sections.valuesAlignment')}</Title>
+                <ThemeIcon size="xl" radius="md" variant="light" color="blue">
+                  <IconChartRadar size={28} />
+                </ThemeIcon>
+              </Group>
+
+              <Paper p="md">
+                <ValuesRadarChart data={valuesData} />
+              </Paper>
+            </Card>
+          </GridCol>
+        </Grid>
+      )}
     </Stack>
   );
 }

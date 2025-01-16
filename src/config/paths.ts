@@ -7,7 +7,6 @@ export const PATHS = {
     reflection: () => '/feedback/reflection',
     peerFeedback: () => '/feedback/appraising',
     history: () => '/feedback/history',
-    insights: () => '/feedback/insights',
     root: () => '/feedback',
   },
   growth: {

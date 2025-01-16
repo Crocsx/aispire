@@ -10,12 +10,7 @@ import {
   TabsTab,
   Container,
 } from '@mantine/core';
-import {
-  IconBulb,
-  IconHistory,
-  IconMessage,
-  IconBrain,
-} from '@tabler/icons-react';
+import { IconHistory, IconMessage, IconBrain } from '@tabler/icons-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -26,7 +21,6 @@ const FeedbackTabs = {
   REFLECTION: 'REFLECTION',
   PEER_FEEDBACK: 'PEER_FEEDBACK',
   HISTORY: 'HISTORY',
-  INSIGHTS: 'INSIGHTS',
 } as const;
 type FeedbackTabs = (typeof FeedbackTabs)[keyof typeof FeedbackTabs];
 
@@ -34,7 +28,6 @@ const FeedbackTabsMapping = {
   [FeedbackTabs.REFLECTION]: PATHS.feedback.reflection(),
   [FeedbackTabs.PEER_FEEDBACK]: PATHS.feedback.peerFeedback(),
   [FeedbackTabs.HISTORY]: PATHS.feedback.history(),
-  [FeedbackTabs.INSIGHTS]: PATHS.feedback.insights(),
 } as const;
 
 export default function Template({ children }: { children: React.ReactNode }) {
@@ -98,15 +91,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
             leftSection={<IconHistory size={16} />}
           >
             {t('tabs', { tab: FeedbackTabs.HISTORY })}
-          </TabsTab>
-          <TabsTab
-            component={Link}
-            // @ts-expect-error This is correct cause the component is a Link
-            href={PATHS.feedback.insights()}
-            value={FeedbackTabs.INSIGHTS}
-            leftSection={<IconBulb size={16} />}
-          >
-            {t('tabs', { tab: FeedbackTabs.INSIGHTS })}
           </TabsTab>
         </TabsList>
         <Container size="lg" py="xl">

@@ -120,8 +120,10 @@
     },
     "FeedbackInsights": {
       "noInsights": "No insights found",
+      "noInsightsDescription": "We couldn't find any insights for your feedback. Please try again later.",
       "paper": {
-        "title": "Feedback Summary"
+        "title": "Feedback Summary",
+        "description": "Here's a summary of your feedback and insights."
       },
       "strengths": {
         "title": "Strengths"

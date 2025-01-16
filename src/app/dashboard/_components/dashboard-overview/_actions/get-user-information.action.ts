@@ -10,11 +10,28 @@ export async function getUserInformation() {
     const supabase = await createClient();
 
     const {
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession();
+
+    if (sessionError?.message || !session) {
+      if (sessionError?.message === 'Error: Not authenticated') {
+        await supabase.auth.signOut();
+        return { success: false, userInformation: null };
+      }
+      throw new Error(sessionError?.message || 'Not authenticated');
+    }
+
+    const {
       data: { user },
       error: authError,
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
+      if (authError?.message === 'Error: Auth session missing!') {
+        await supabase.auth.signOut();
+        return { success: false, userInformation: null };
+      }
       throw new Error(authError?.message || 'Not authenticated');
     }
 

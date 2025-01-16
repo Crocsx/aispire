@@ -1,2 +1,2 @@
 import loadable from '@loadable/component';
-export const AIspireLogoIcon = loadable(() => import('./aispireLogo'));
+export const AispireLogoIcon = loadable(() => import('./aispireLogo'));

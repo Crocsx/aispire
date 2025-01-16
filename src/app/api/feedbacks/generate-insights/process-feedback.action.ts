@@ -33,9 +33,6 @@ async function parseOpenAIResponse<T>(
 ): Promise<T> {
   const message = messages.data[0];
 
-  console.log('parseOpenAIResponse');
-  console.log(message);
-
   const messageContent = message?.content[0] as {
     type: 'text';
     text: { value: string };
@@ -51,9 +48,6 @@ async function parseOpenAIResponse<T>(
   } catch {
     parsedJson = {};
   }
-
-  console.log('parsedJson');
-  console.log(parsedJson);
 
   return schema.parse({
     ...additionalData,
@@ -265,8 +259,6 @@ async function processInsights(processId: string, userId: string) {
       runId: processId,
     };
 
-    console.log(feedbackData);
-
     await openai.beta.threads.messages.create(thread.id, {
       role: 'user',
       content: generateInsightPrompt(feedbackData),
@@ -294,7 +286,7 @@ async function processInsights(processId: string, userId: string) {
 
     // Update process status to completed
     await supabase
-      .from('insight_processes')
+      .from('insights_processes')
       .update({ status: 'completed' })
       .eq('id', processId);
   } catch (error) {
@@ -302,7 +294,7 @@ async function processInsights(processId: string, userId: string) {
     const supabase = await createClient();
     // Update process status to failed
     await supabase
-      .from('insight_processes')
+      .from('insights_processes')
       .update({
         status: 'failed',
         error: error instanceof Error ? error.message : 'Unknown error',
@@ -318,7 +310,7 @@ export async function processUserFeedback(userId: string) {
   const supabase = await createClient();
 
   // Create process record
-  await supabase.from('insight_processes').insert({
+  await supabase.from('insights_processes').insert({
     id: processId,
     user_id: userId,
     status: 'processing',

@@ -1,6 +1,8 @@
 import { Stack, Text, Title, Grid, Paper, Card, GridCol } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
+import { StateCard } from 'src/app/_components';
+
 import { getValues } from './_actions';
 import { ValuesRadarChart } from '../values-radar-chart';
 
@@ -8,15 +10,24 @@ export async function InsightValues() {
   const t = await getTranslations('app:insight.InsightValues');
   const result = await getValues();
 
-  if (!result.success || !result.data) {
+  const values = result.data;
+  if (!result.success || !values) {
     return (
-      <Text c="red" size="sm">
-        Error loading values: {result.error}
-      </Text>
+      <Stack gap="xl">
+        <Paper shadow="sm" p="md" withBorder>
+          <Stack gap="xs">
+            <Title order={4}>{t('title')}</Title>
+            <Text size="sm" c="dimmed">
+              {t('subtitle')}
+            </Text>
+          </Stack>
+        </Paper>
+        <Paper shadow="sm" p="md" withBorder>
+          <StateCard isEmpty={!values} error={result.error} />
+        </Paper>
+      </Stack>
     );
   }
-
-  const values = result.data;
 
   const valuesList = [
     {

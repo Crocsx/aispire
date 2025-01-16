@@ -7,7 +7,7 @@ import {
   createTheme,
 } from '@mantine/core';
 
-import { AIspireLogoIcon } from '~aispire/shared/icons';
+import { AispireLogoIcon } from '~aispire/shared/icons';
 
 const primary: MantineColorsTuple = [
   '#F0F4F8', // Lightest Primary
@@ -68,7 +68,7 @@ export const themeBlue = createTheme({
   },
   other: {
     logo: (props: SVGProps<SVGSVGElement>) => (
-      <AIspireLogoIcon fill={primary[7]} {...props} />
+      <AispireLogoIcon fill={primary[7]} {...props} />
     ),
   },
 });

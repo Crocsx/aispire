@@ -62,7 +62,6 @@ export const GoogleSignIn = () => {
           throw error;
         }
 
-        // Handle successful sign in
         console.log('Signed in successfully:', data);
       } catch (err) {
         console.error('Failed to sign in:', err);

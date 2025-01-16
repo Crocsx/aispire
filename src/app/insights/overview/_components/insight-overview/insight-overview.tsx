@@ -17,21 +17,33 @@ import {
 } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
 
+import { StateCard } from 'src/app/_components';
+
 import { getOverview } from './_actions';
 
 export async function InsightOverview() {
   const t = await getTranslations('app:insight.InsightOverview');
   const result = await getOverview();
 
-  if (!result.success || !result.data) {
+  const overview = result.data;
+
+  if (!result.success || !overview) {
     return (
-      <Text c="red" size="sm">
-        Error loading overview: {result.error}
-      </Text>
+      <Stack gap="xl">
+        <Paper shadow="sm" p="md" withBorder>
+          <Stack gap="xs">
+            <Title order={4}>{t('title')}</Title>
+            <Text size="sm" c="dimmed">
+              {t('subtitle')}
+            </Text>
+          </Stack>
+        </Paper>
+        <Paper shadow="sm" p="md" withBorder>
+          <StateCard isEmpty={!overview} error={result.error} />
+        </Paper>
+      </Stack>
     );
   }
-
-  const overview = result.data;
 
   return (
     <Stack gap="xl">

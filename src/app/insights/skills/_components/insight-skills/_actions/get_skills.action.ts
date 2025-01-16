@@ -19,8 +19,15 @@ export const getSkills = async () => {
       .order('created_at', { ascending: false })
       .limit(1)
       .single();
-    console.log(data, error, (await supabase.auth.getUser()).data.user?.id);
+
     if (error) {
+      if (error.code === 'PGRST116') {
+        return {
+          success: true,
+          error: undefined,
+          data: null,
+        };
+      }
       throw error;
     }
 

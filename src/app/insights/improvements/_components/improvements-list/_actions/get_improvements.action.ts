@@ -21,6 +21,13 @@ export const getImprovements = async () => {
       .single();
 
     if (error) {
+      if (error.code === 'PGRST116') {
+        return {
+          success: true,
+          error: undefined,
+          data: null,
+        };
+      }
       throw error;
     }
 

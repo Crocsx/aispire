@@ -1,6 +1,8 @@
 import { Stack, Text, Title, Grid, Paper, GridCol } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
+import { StateCard } from 'src/app/_components';
+
 import { getImprovements } from './_actions';
 import { RecommendationCard } from './_components';
 
@@ -8,15 +10,25 @@ export async function ImprovementsList() {
   const t = await getTranslations('app:insight.ImprovementsList');
   const result = await getImprovements();
 
-  if (!result.success || !result.data) {
+  const improvements = result.data;
+
+  if (!result.success || !improvements) {
     return (
-      <Text c="red" size="sm">
-        Error loading improvements: {result.error}
-      </Text>
+      <Stack gap="xl">
+        <Paper shadow="sm" p="md" withBorder>
+          <Stack gap="xs">
+            <Title order={4}>{t('title')}</Title>
+            <Text size="sm" c="dimmed">
+              {t('subtitle')}
+            </Text>
+          </Stack>
+        </Paper>
+        <Paper shadow="sm" p="md" withBorder>
+          <StateCard isEmpty={!improvements} error={result.error} />
+        </Paper>
+      </Stack>
     );
   }
-
-  const improvements = result.data;
 
   return (
     <Stack gap="xl">

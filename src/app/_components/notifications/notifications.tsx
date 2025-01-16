@@ -1,14 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Popover, ActionIcon, rem } from '@mantine/core';
 import { IconBell } from '@tabler/icons-react';
 
+import { useAuthCtx } from '~aispire/common/auth';
+
+import { Process, subscribeToProcess } from './_actions';
 import { NotificationEmpty } from './_components';
 
 export const Notifications = () => {
   const [opened, setOpened] = useState(false);
+  const [process, setProcess] = useState<Process | null>(null);
+
+  const { self } = useAuthCtx();
+
+  useEffect(() => {
+    if (self?.id) {
+      const unsubscribe = subscribeToProcess(self.id, (process) => {
+        console.log('process', process);
+        setProcess(process);
+      });
+      return () => unsubscribe();
+    }
+  }, [self?.id]);
 
   return (
     <Popover
@@ -29,9 +45,7 @@ export const Notifications = () => {
         </ActionIcon>
       </Popover.Target>
 
-      <Popover.Dropdown>
-        <NotificationEmpty />
-      </Popover.Dropdown>
+      <Popover.Dropdown>{process && <NotificationEmpty />}</Popover.Dropdown>
     </Popover>
   );
 };
