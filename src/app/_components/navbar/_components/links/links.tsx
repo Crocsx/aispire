@@ -35,7 +35,7 @@ const LINKS = [
     icon: (props: IconProps) => <IconBrain {...props} />,
   },
   {
-    path: PATHS.insights.improvement(),
+    path: PATHS.insights.overview(),
     root: PATHS.insights.root(),
     labelKey: 'link.profileInsights',
     icon: (props: IconProps) => <IconHeartFilled {...props} />,

@@ -15,12 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "~aispire/common/auth": ["modules/common/auth/src/index.ts"],
+      "~aispire/common/auth/server": ["modules/common/auth/src/server.ts"],
       "~aispire/external/openai": ["modules/external/openai/src/index.ts"],
       "~aispire/external/openai/server": [
         "modules/external/openai/src/server.ts"
       ],
-      "~aispire/common/auth": ["modules/common/auth/src/index.ts"],
-      "~aispire/common/auth/server": ["modules/common/auth/src/server.ts"],
       "~aispire/external/supabase": ["modules/external/supabase/src/index.ts"],
       "~aispire/external/supabase/server": [
         "modules/external/supabase/src/server.ts"

@@ -1,9 +1,8 @@
 import { Stack, Text, Title, Grid, Paper, Card, GridCol } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
-import { StateCard } from 'src/app/_components';
-
 import { getValues } from './_actions';
+import { StateCard } from '../../../../_components';
 import { ValuesRadarChart } from '../values-radar-chart';
 
 export async function InsightValues() {

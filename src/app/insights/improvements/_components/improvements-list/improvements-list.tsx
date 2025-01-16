@@ -1,10 +1,9 @@
 import { Stack, Text, Title, Grid, Paper, GridCol } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
-import { StateCard } from 'src/app/_components';
-
 import { getImprovements } from './_actions';
 import { RecommendationCard } from './_components';
+import { StateCard } from '../../../../_components';
 
 export async function ImprovementsList() {
   const t = await getTranslations('app:insight.ImprovementsList');

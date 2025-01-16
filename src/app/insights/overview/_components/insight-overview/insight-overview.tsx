@@ -17,9 +17,8 @@ import {
 } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
 
-import { StateCard } from 'src/app/_components';
-
 import { getOverview } from './_actions';
+import { StateCard } from '../../../../_components';
 
 export async function InsightOverview() {
   const t = await getTranslations('app:insight.InsightOverview');

@@ -40,9 +40,7 @@ const InsightTabsMapping = {
 export default function Template({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [activeTab, setActiveTab] = useState<InsightTabs>(
-    InsightTabs.VALUES_ALIGNMENT
-  );
+  const [activeTab, setActiveTab] = useState<InsightTabs>(InsightTabs.OVERVIEW);
   const t = useTranslations('app:insight.Shell');
 
   useEffect(() => {

@@ -1,9 +1,8 @@
 import { Card, Grid, GridCol, Paper, Stack, Text, Title } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
-import { StateCard } from 'src/app/_components';
-
 import { getSkills } from './_actions';
+import { StateCard } from '../../../../_components';
 
 export async function InsightSkills() {
   const t = await getTranslations('app:insight.InsightSkills');
