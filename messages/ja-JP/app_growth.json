@@ -1,0 +1,8 @@
+{
+  "app:growth": {
+    "Shell": {
+      "title": "成長ゾーン",
+      "tabs": "{tab, select, other {不明} COMPANY_VALUES {企業価値} CAREER_PROGRESSION {キャリア発展} ACHIEVEMENTS {達成} LEARNING {学習} PRACTICE {練習シナリオ}}"
+    }
+  }
+}

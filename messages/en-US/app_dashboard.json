@@ -20,9 +20,12 @@
     "reflectionOverdue": "Overdue by {days} days",
     "reflectionUpToDate": "You're up to date with your reflections",
     "noReflectionYet": "No reflection recorded yet",
+    "addNewReflection": "Write your first Reflection",
     "from": "From {name}",
     "noFeedbackYet": "No feedback received yet",
+    "requestFeedback": "Please ask your manager and peers for feedback during your next 1:1 meeting",
     "noStrengthsYet": "No strengths identified yet",
+    "strengthAfterEvaluation": "Strengths will be identified after a reflection or feedback is recieved",
     "lastReflection": "Last reflection {time}",
     "values": {
       "be_open": "Be Open",

@@ -1,0 +1,37 @@
+{
+  "app:core": {
+    "Navbar": {
+      "link": {
+        "dashboard": "ダッシュボード",
+        "feedbackHub": "フィードバックハブ",
+        "growthZone": "成長ゾーン",
+        "profileInsights": "プロフィールインサイト",
+        "helpAndSupport": "ヘルプ＆サポート"
+      }
+    },
+    "NotFound": {
+      "title": "ページが見つかりません",
+      "description": "お探しのページは存在しません。",
+      "back": "ホームに戻る"
+    },
+    "Loading": {
+      "title": "準備中..."
+    },
+    "Notifications": {
+      "empty": "新しい通知はありません",
+      "process": {
+        "title": "{status, select, other {不明} COMPLETED {完了} FAILED {失敗} PROCESSING {処理中}}",
+        "content": "{status, select, other {不明} COMPLETED {処理が完了しました。インサイトを確認できます。} FAILED {インサイトの生成中にエラーが発生しました。} PROCESSING {インサイトを分析中です。処理が完了するまでお待ちください。}}",
+        "viewDetails": "詳細を表示 →"
+      }
+    },
+    "SignInOverlay": {
+      "title": "AIspireへようこそ！",
+      "description": "続行するにはGoogleアカウントで接続してください"
+    },
+    "NotImplemented": {
+      "title": "未実装",
+      "description": "この機能はまだ実装されていません。これはデモページです。"
+    }
+  }
+}

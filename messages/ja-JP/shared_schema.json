@@ -1,0 +1,9 @@
+{
+  "shared:schema": {
+    "enum": {
+      "department": "{department, select, other {不明} ENGINEERING {エンジニアリング}}",
+      "businessUnit": "{businessUnit, select, other {不明} PRODUCT_DEVELOPMENT {製品開発}}",
+      "feedbackType": "{type, select, other {不明} MANAGER_REVIEW {マネージャーレビュー} PEER_REVIEW {ピアレビュー} CLIENT_FEEDBACK {クライアントフィードバック}}"
+    }
+  }
+}

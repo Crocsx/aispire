@@ -1,1 +1,1 @@
-export * from './update-user-settings-avatar-form';
+export * from './update-user-settings-locale-form';

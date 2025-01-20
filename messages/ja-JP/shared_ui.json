@@ -1,0 +1,32 @@
+{
+  "shared:ui": {
+    "LanguageSelector": {
+      "language": "{language, select, other {不明} en_US {English} ja_JP {日本語}}"
+    },
+    "ToggleableForm": {
+      "button": {
+        "apply": "適用",
+        "edit": "編集",
+        "cancel": "キャンセル"
+      }
+    },
+    "Chat": {
+      "InputForm": {
+        "send": "送信",
+        "field": {
+          "label": "メッセージ",
+          "placeholder": "メッセージを入力..."
+        }
+      },
+      "MessageListEmpty": {
+        "noMessages": "まだメッセージがありません。質問をして始めましょう。"
+      }
+    },
+    "StateCard": {
+      "noData": "データなし",
+      "noDataDescription": "表示するデータがありません",
+      "notFound": "見つかりません",
+      "notFoundDescription": "要求されたリソースが見つかりませんでした"
+    }
+  }
+}

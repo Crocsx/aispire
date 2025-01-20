@@ -47,6 +47,7 @@ export const UpdateUserSettingsTimezoneForm = ({
     >
       <Select
         {...form.getInputProps('timezone')}
+        clearable={false}
         data={TIMEZONES.map((tz) => ({
           value: tz,
           label: tz,

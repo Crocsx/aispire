@@ -1,0 +1,33 @@
+{
+  "external:supabase": {
+    "error": {
+      "default": "認証APIで予期せぬエラーが発生しました",
+      "anonymous_provider_disabled": "匿名サインインは無効になっています。",
+      "email_address_not_authorized": "プロジェクトがデフォルトのSMTPサービスを使用しているため、このアドレスへのメール送信は許可されていません。カスタムSMTPプロバイダーを設定してください。",
+      "email_exists": "このメールアドレスは既に登録されています。",
+      "email_not_confirmed": "メールアドレスが確認されていないため、このユーザーのサインインは許可されていません。",
+      "invalid_credentials": "ログイン認証情報またはグラントタイプが認識できません。",
+      "invalid_confirmation_token": "確認トークンが提供されていないか、期限切れです。",
+      "invalid_or_expired_reset_password": "パスワードリセットリンクが期限切れまたは無効です。新しいリンクをリクエストしてください。",
+      "invite_not_found": "招待が期限切れまたは既に使用されています。",
+      "mfa_challenge_expired": "MFAチャレンジが期限切れです。新しいチャレンジをリクエストしてください。",
+      "mfa_verification_failed": "MFAチャレンジの検証に失敗しました - TOTPコードが正しくありません。",
+      "no_authorization": "このリクエストには認証が必要です。",
+      "otp_disabled": "OTPサインインが無効になっています。サーバー設定を確認してください。",
+      "otp_expired": "このサインインのOTPコードが期限切れです。ユーザーに再度サインインを依頼してください。",
+      "over_email_send_rate_limit": "このアドレスへのメール送信が多すぎます。しばらく待ってから再試行してください。",
+      "over_request_rate_limit": "このクライアントからのリクエストが多すぎます。数分後に再試行してください。",
+      "phone_exists": "この電話番号は既に登録されています。",
+      "phone_not_confirmed": "電話番号が確認されていません。",
+      "provider_disabled": "OAuthプロバイダーが無効になっています。設定を確認してください。",
+      "reauthentication_needed": "再認証が必要です。もう一度ログインしてください。",
+      "session_not_found": "セッションが存在しません。もう一度サインインしてください。",
+      "signup_disabled": "このサーバーでサインアップは無効になっています。",
+      "unexpected_failure": "サービスエラーが発生しました。後でもう一度お試しください。",
+      "user_already_exists": "この情報を持つユーザーは既に存在します。",
+      "user_banned": "ユーザーはBANされています。BANが解除されるまでリクエストは許可されません。",
+      "user_not_found": "ユーザーが存在しません。",
+      "weak_password": "パスワードが強度要件を満たしていません。"
+    }
+  }
+}

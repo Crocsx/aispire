@@ -1,7 +1,7 @@
 {
   "shared:ui": {
     "LanguageSelector": {
-      "language": "{language, select,other {Unknown}en_US {English}ja_JP{日本語}it_IT{Italiano}}"
+      "language": "{language, select,other {Unknown}en_US {English}ja_JP{日本語}}"
     },
     "ToggleableForm": {
       "button": {
@@ -21,6 +21,12 @@
       "MessageListEmpty": {
         "noMessages": "No messages yet. Start by asking a question."
       }
+    },
+    "StateCard": {
+      "noData": "No Data",
+      "noDataDescription": "There is no data to display",
+      "notFound": "Not Found",
+      "notFoundDescription": "The requested resource was not found"
     }
   }
 }

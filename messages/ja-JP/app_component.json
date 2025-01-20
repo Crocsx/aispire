@@ -1,0 +1,15 @@
+{
+  "app:component": {
+    "Header": {
+      "title": "AIspire",
+      "userMenu": {
+        "logout": "ログアウト",
+        "settings": "設定"
+      },
+      "language": "{language, select, other {不明} en_US {English} ja_JP {日本語} it_IT {Italiano}}"
+    },
+    "Footer": {
+      "copyright": "© Copyright {date} Federico. All rights reserved."
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "app:insight": {
+    "Shell": {
+      "title": "プロフィールインサイト",
+      "tabs": "{selectedTab, select, other {不明} OVERVIEW {概要} VALUES_ALIGNMENT {価値観の一致} IMPROVEMENT {改善点} SKILL_ANALYSIS {スキル分析}}"
+    },
+    "ImprovementsList": {
+      "title": "改善点",
+      "subtitle": "プロフィール評価に基づく改善が必要な領域です。"
+    },
+    "InsightOverview": {
+      "title": "インサイト概要",
+      "subtitle": "プロフィール評価に基づく、あなたの特性の要約です。",
+      "profileSummary": {
+        "title": "プロフィール要約"
+      },
+      "strengths": {
+        "title": "主な強み"
+      },
+      "improvements": {
+        "title": "改善が必要な領域"
+      },
+      "characteristics": {
+        "title": "主な特徴"
+      },
+      "criticalFocus": {
+        "title": "重点的な注目領域"
+      }
+    },
+    "InsightSkills": {
+      "title": "スキル評価",
+      "subtitle": "専門的スキルとその発展の詳細分析",
+      "rating": "評価",
+      "categories": {
+        "communication": "コミュニケーション",
+        "problemSolving": "問題解決",
+        "collaboration": "協働",
+        "leadership": "リーダーシップ"
+      },
+      "skills": {
+        "clarity": {
+          "name": "明確さ"
+        },
+        "listening": {
+          "name": "傾聴力"
+        },
+        "critical_thinking": {
+          "name": "批判的思考"
+        },
+        "creativity": {
+          "name": "創造性"
+        },
+        "team_contribution": {
+          "name": "チームへの貢献"
+        },
+        "conflict_resolution": {
+          "name": "対立解決"
+        },
+        "initiative": {
+          "name": "主体性"
+        },
+        "motivation": {
+          "name": "モチベーション"
+        }
+      }
+    },
+    "InsightValues": {
+      "title": "コアバリュー評価",
+      "subtitle": "組織の価値観をどの程度体現しているか、成長が必要な領域を特定します。",
+      "values": {
+        "beOpen": {
+          "name": "オープンであること",
+          "description": "多様性を受け入れ、他者の意見を尊重しながら自分の考えを率直に表現する。"
+        },
+        "beBold": {
+          "name": "大胆であること",
+          "description": "自分に制限を設けず、より多くのことに挑戦し続ける。"
+        },
+        "moveFaster": {
+          "name": "より速く動くこと",
+          "description": "誰よりも速く、アイデアを行動に移す。"
+        },
+        "stayUpdated": {
+          "name": "最新であること",
+          "description": "より良い結果を得るために、情報をアップデートし続ける。"
+        },
+        "achieveTogether": {
+          "name": "共に達成すること",
+          "description": "あらゆる状況で、共通の目標を見出し、それに向かって進む。"
+        }
+      }
+    }
+  }
+}

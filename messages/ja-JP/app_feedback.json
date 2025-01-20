@@ -1,0 +1,97 @@
+{
+  "app:feedback": {
+    "Shell": {
+      "title": "フィードバックハブ",
+      "tabs": "{tab, select, other {不明} REFLECTION {振り返り} PEER_FEEDBACK {ピアフィードバック} HISTORY {履歴} INSIGHTS {インサイト}}"
+    },
+    "Feedback": {
+      "title": "フィードバック",
+      "tabs": {
+        "reflectionTab": "振り返り",
+        "historyTab": "履歴"
+      },
+      "emptyMessageTemplate": {
+        "title": "振り返りスペースへようこそ",
+        "description": "ここはあなたの考え、感情、経験を共有する場所です。以下に振り返りを入力すると、AIアシスタントがあなたの成長の旅をサポートします。",
+        "starter": "今日は以下について振り返りたいと思います..."
+      }
+    },
+    "AddFeedbackForm": {
+      "paper": {
+        "title": "新規フィードバック追加",
+        "description": "他者の成長と改善を支援する建設的なフィードバックを提供してください"
+      },
+      "form": {
+        "error": {
+          "title": "エラー",
+          "description": "問題が発生しました"
+        },
+        "success": {
+          "title": "ピアフィードバックありがとうございます！",
+          "description": "ピアフィードバックが正常に送信されました。建設的なフィードバックを提供することで、全員にとって支援的な学習環境を作ることができます。"
+        },
+        "field": {
+          "user": {
+            "label": "フィードバック対象",
+            "placeholder": "フィードバックを提供したいユーザー"
+          },
+          "type": {
+            "label": "ソース",
+            "placeholder": "フィードバックのソースを選択"
+          },
+          "content": {
+            "label": "フィードバック",
+            "placeholder": "フィードバックは建設的で、支援的で、改善のための提案を含むようにしてください。"
+          }
+        },
+        "submit": "フィードバックを送信"
+      }
+    },
+    "FeedbackActivityTimeline": {
+      "paper": {
+        "title": "過去の振り返り",
+        "description": "過去の振り返りを確認し、時間とともにどのように成長したかを見てみましょう。"
+      },
+      "timelineItem": {
+        "feedback": "フィードバック",
+        "content": "内容",
+        "viewDetails": "詳細を表示",
+        "yourReflection": "あなたの振り返り",
+        "aiFeedback": "AIフィードバック",
+        "pointsImproved": "改善された点",
+        "pointsToImprove": "改善すべき点",
+        "summary": "要約",
+        "suggestion": "提案",
+        "whatWentWell": "うまくいったこと",
+        "challengeFaced": "直面した課題",
+        "focusForTomorrow": "明日の焦点"
+      },
+      "timelineEmpty": {
+        "title": "まだ振り返りがありません",
+        "description": "以下に振り返りを入力すると、AIアシスタントがあなたの成長の旅をサポートします。",
+        "action": "振り返りを始める"
+      }
+    },
+    "FeedbackInsights": {
+      "noInsights": "インサイトが見つかりません",
+      "noInsightsDescription": "フィードバックのインサイトを見つけることができませんでした。後でもう一度お試しください。",
+      "paper": {
+        "title": "フィードバック要約",
+        "description": "フィードバックとインサイトの要約です。"
+      },
+      "strengths": {
+        "title": "強み"
+      },
+      "improvements": {
+        "title": "改善が必要な領域"
+      },
+      "nextSteps": {
+        "title": "次のステップ"
+      },
+      "resources": {
+        "title": "推奨リソース",
+        "accessButton": "リソースにアクセス"
+      }
+    }
+  }
+}

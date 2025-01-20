@@ -1,0 +1,38 @@
+{
+  "app:dashboard": {
+    "PersonalOverview": {
+      "title": "お帰りなさい、{username}さん！",
+      "level": "レベル {level}"
+    },
+    "reflectionReminder": {
+      "title": "振り返りの時間です",
+      "description": "前回の振り返りから{days}日が経過しています。最近の経験について振り返ってみましょう。"
+    },
+    "sections": {
+      "lastReflection": "最新の振り返り",
+      "latestFeedback": "最新のフィードバック",
+      "keyStrengths": "主な強み",
+      "valuesAlignment": "価値観の一致度",
+      "strengths": "主な強み",
+      "values": "コアバリューの評価"
+    },
+    "lastReflectionDate": "最終振り返り日: {date}",
+    "reflectionOverdue": "{days}日経過しています",
+    "reflectionUpToDate": "振り返りは最新です",
+    "noReflectionYet": "まだ振り返りがありません",
+    "addNewReflection": "最初の振り返りを書く",
+    "from": "{name}さんから",
+    "noFeedbackYet": "まだフィードバックがありません",
+    "requestFeedback": "次の1on1ミーティングで、マネージャーや同僚にフィードバックを依頼してください",
+    "noStrengthsYet": "まだ強みが特定されていません",
+    "strengthAfterEvaluation": "振り返りやフィードバックを受けた後に強みが特定されます",
+    "lastReflection": "最終振り返り: {time}",
+    "values": {
+      "be_open": "オープンであること",
+      "be_bold": "大胆であること",
+      "stay_updated": "最新であること",
+      "achieve_together": "共に達成すること",
+      "move_faster": "より速く動くこと"
+    }
+  }
+}

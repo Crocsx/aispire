@@ -18,7 +18,12 @@
       "title": "Getting things ready..."
     },
     "Notifications": {
-      "empty": "No new notifications"
+      "empty": "No new notifications",
+      "process": {
+        "title": "{status, select, other {unknown} COMPLETED {Completed} FAILED {Failed} PROCESSING {Processing}}",
+        "content": "{status, select, other {unknown} COMPLETED {Process completed. You can now see the insights.} FAILED {Something went wrong while generating your insights.} PROCESSING {Currently analyzing your insights, please wait for the process to finish.}}",
+        "viewDetails": "Click to view details →"
+      }
     },
     "SignInOverlay": {
       "title": "Welcome to AIspire !",

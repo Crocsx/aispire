@@ -19,7 +19,7 @@ export type ToggleableForm = <Form extends UseFormReturnType<any>>(
 ) => JSX.Element | React.ReactNode;
 
 export const ToggleableForm = forwardRef(
-  <Form extends UseFormReturnType<any>>(
+  <Form extends UseFormReturnType<any>, T extends TransformedValues<Form>>(
     {
       form,
       onSubmit,
@@ -38,12 +38,18 @@ export const ToggleableForm = forwardRef(
       setIsEditing(toggle);
     }, []);
 
+    const onSubmitHandler = useCallback(
+      (v: T) => {
+        onSubmit?.(v);
+        setIsEditing(false);
+      },
+      [onSubmit]
+    );
+
     return (
       <form
         {...others}
-        onSubmit={form.onSubmit(
-          typeof onSubmit === 'function' ? onSubmit : () => null
-        )}
+        onSubmit={form.onSubmit(onSubmitHandler)}
         onReset={(event) => {
           onReset?.(event);
           form.onReset(event);

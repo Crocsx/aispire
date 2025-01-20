@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { Stack, Text, Title, Center } from '@mantine/core';
 import { IconAlertCircle, IconInbox, IconSearch } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 
 interface StateCardProps {
   error?: string;
@@ -20,6 +21,7 @@ export function StateCard({
   emptyTemplate,
   notFoundTemplate,
 }: StateCardProps) {
+  const t = useTranslations('shared:ui.StateCard');
   if (error) {
     if (errorTemplate) return <>{errorTemplate}</>;
     return (
@@ -41,9 +43,9 @@ export function StateCard({
       <Center h={200}>
         <Stack align="center" gap="xs">
           <IconInbox size={40} color="gray" />
-          <Title order={4}>No Data</Title>
+          <Title order={4}>{t('noData')}</Title>
           <Text size="sm" c="dimmed">
-            There is no data to display
+            {t('noDataDescription')}
           </Text>
         </Stack>
       </Center>
@@ -56,9 +58,9 @@ export function StateCard({
       <Center h={200}>
         <Stack align="center" gap="xs">
           <IconSearch size={40} color="gray" />
-          <Title order={4}>Not Found</Title>
+          <Title order={4}>{t('notFound')}</Title>
           <Text size="sm" c="dimmed">
-            The requested resource was not found
+            {t('notFoundDescription')}
           </Text>
         </Stack>
       </Center>

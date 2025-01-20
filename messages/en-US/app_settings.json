@@ -39,7 +39,8 @@
           },
           "locale": {
             "placeholder": "Display Language",
-            "label": "Display Language"
+            "label": "Display Language",
+            "language": "{language, select,other {Unknown}en_US {English}ja_JP{日本語}}"
           },
           "timezone": {
             "placeholder": "Timezone",

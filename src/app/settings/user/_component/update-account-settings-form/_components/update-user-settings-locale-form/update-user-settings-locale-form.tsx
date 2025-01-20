@@ -35,7 +35,9 @@ export const UpdateUserSettingsLocaleForm = ({
           data={[
             {
               value: locale,
-              label: locale,
+              label: t('form.field.locale.language', {
+                language: locale.replace('-', '_'),
+              }),
             },
           ]}
           value={locale}
@@ -46,9 +48,12 @@ export const UpdateUserSettingsLocaleForm = ({
     >
       <Select
         {...form.getInputProps('locale')}
+        clearable={false}
         data={LOCALES.map((lc) => ({
+          label: t('form.field.locale.language', {
+            language: lc.replace('-', '_'),
+          }),
           value: lc,
-          label: lc,
         }))}
         label={t('form.field.locale.label')}
         placeholder={t('form.field.locale.placeholder')}

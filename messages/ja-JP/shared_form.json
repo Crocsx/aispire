@@ -1,0 +1,30 @@
+{
+  "shared:form": {
+    "validation": {
+      "error": {
+        "required": "{field}は必須です",
+        "invalid": "{field}が無効です",
+        "invalidDate": "{field}は無効な日付です",
+        "min": "{field}は{min}より大きい必要があります",
+        "minEqual": "{field}は{min}以上である必要があります",
+        "max": "{field}は{max}より小さい必要があります",
+        "maxEqual": "{field}は{max}以下である必要があります",
+        "fileType": "無効なファイル形式です。{types}のみ許可されています",
+        "minMax": "{field}は{min}から{max}の間である必要があります",
+        "charEqual": "{field}は正確に{value}文字である必要があります",
+        "charMin": "{field}は最低{min}文字必要です",
+        "charMax": "{field}は最大{max}文字までです",
+        "url": "{field}は有効なURLではありません",
+        "notMatch": "{field1}と{field2}が一致しません",
+        "passwordRules": "{field}は最低8文字で、数字、大文字、特殊文字(!@＃$％^&)を含む必要があります",
+        "noWhitespace": "{field}は文字、数字、'-'または'_'のみを含む必要があります",
+        "noSpecialCharacter": "{field}は文字と数字のみを含む必要があります",
+        "integer": "{field}は整数である必要があります",
+        "numeric": "{field}は数値である必要があります",
+        "before": "{field1}は{field2}より前である必要があります",
+        "after": "{field1}は{field2}より後である必要があります",
+        "mustAccept": "{field}に同意する必要があります"
+      }
+    }
+  }
+}

@@ -12,14 +12,21 @@ import {
   Badge,
   GridCol,
   ListItem,
+  Button,
+  Flex,
 } from '@mantine/core';
 import {
   IconTrophy,
   IconMessageCircle,
   IconChartRadar,
   IconCalendarStats,
+  IconPencilPlus,
+  IconInfoCircle,
 } from '@tabler/icons-react';
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+
+import { PATHS } from 'src/config';
 
 import { getDashboardData, getUserInformation } from './_actions';
 import { PersonalOverview, ValuesRadarChart } from './_components';
@@ -120,9 +127,21 @@ export async function DashboardOverview() {
               </Text>
             </>
           ) : (
-            <Text size="sm" c="dimmed">
-              {t('noReflectionYet')}
-            </Text>
+            <Stack>
+              <Text size="sm" c="dimmed">
+                {t('noReflectionYet')}
+              </Text>
+              <Button
+                component={Link}
+                href={PATHS.feedback.reflection()}
+                variant="filled"
+                color="blue"
+                leftSection={<IconPencilPlus size={16} />}
+                fullWidth
+              >
+                {t('addNewReflection')}
+              </Button>
+            </Stack>
           )}
         </Card>
 
@@ -145,9 +164,21 @@ export async function DashboardOverview() {
               </Text>
             </>
           ) : (
-            <Text size="sm" c="dimmed">
-              {t('noFeedbackYet')}
-            </Text>
+            <Stack>
+              <Text size="sm" c="dimmed">
+                {t('noFeedbackYet')}
+              </Text>
+              <Flex gap="xs" align="center">
+                <IconMessageCircle
+                  size={16}
+                  style={{ flexShrink: '0' }}
+                  color="var(--mantine-color-grape-6)"
+                />
+                <Text size="sm" c="dimmed">
+                  <span>{t('requestFeedback')}</span>
+                </Text>
+              </Flex>
+            </Stack>
           )}
         </Card>
 
@@ -178,9 +209,23 @@ export async function DashboardOverview() {
                 ))}
             </List>
           ) : (
-            <Text size="sm" c="dimmed">
-              {t('noStrengthsYet')}
-            </Text>
+            <Stack>
+              <Flex gap="xs" align="center">
+                <Text size="sm" c="dimmed">
+                  <span>{t('noStrengthsYet')}</span>
+                </Text>
+              </Flex>
+              <Flex gap="xs" align="center">
+                <IconInfoCircle
+                  size={16}
+                  style={{ flexShrink: '0', opacity: 0.5 }}
+                  color="var(--mantine-color-teal-6)"
+                />
+                <Text size="sm" c="dimmed">
+                  <span>{t('strengthAfterEvaluation')}</span>
+                </Text>
+              </Flex>
+            </Stack>
           )}
         </Card>
       </SimpleGrid>

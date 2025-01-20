@@ -1,0 +1,58 @@
+{
+  "app:settings": {
+    "Shell": {
+      "title": "設定",
+      "tabs": "{tab, select, other {不明} USER {ユーザー} GENERAL {一般} STYLE {スタイル}}"
+    },
+    "StyleSettings": {
+      "title": "スタイル設定"
+    },
+    "GeneralSettings": {
+      "title": "一般設定"
+    },
+    "UserSettings": {
+      "form": {
+        "section": {
+          "personalInformation": "個人情報",
+          "language": "言語"
+        },
+        "field": {
+          "avatar": {
+            "label": "アバター",
+            "placeholder": "アバターを変更"
+          },
+          "email": {
+            "placeholder": "user@aispire.com",
+            "label": "メールアドレス"
+          },
+          "currentPassword": {
+            "placeholder": "現在のパスワード",
+            "label": "現在のパスワード"
+          },
+          "newPassword": {
+            "placeholder": "新しいパスワード",
+            "label": "新しいパスワード"
+          },
+          "confirmationPassword": {
+            "placeholder": "パスワード確認",
+            "label": "パスワード確認"
+          },
+          "locale": {
+            "placeholder": "表示言語",
+            "label": "表示言語",
+            "language": "{language, select,other {Unknown}en_US {English}ja_JP{日本語}}"
+          },
+          "timezone": {
+            "placeholder": "タイムゾーン",
+            "label": "タイムゾーン"
+          }
+        },
+        "error": {
+          "title": "認証に失敗しました",
+          "defaultMessage": "サインインできませんでした。後でもう一度お試しください"
+        },
+        "submit": "変更を保存"
+      }
+    }
+  }
+}
