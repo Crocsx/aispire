@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTransition } from 'react';
 
 import {
   Title,
@@ -9,6 +10,8 @@ import {
   TabsList,
   TabsTab,
   Container,
+  Transition,
+  Loader,
 } from '@mantine/core';
 import { IconHistory, IconMessage, IconBrain } from '@tabler/icons-react';
 import Link from 'next/link';
@@ -36,6 +39,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [activeTab, setActiveTab] = useState<FeedbackTabs>(
     FeedbackTabs.REFLECTION
   );
+  const [isPending, startTransition] = useTransition();
   const t = useTranslations('app:feedback.Shell');
 
   useEffect(() => {
@@ -51,7 +55,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   const handleTabChange = (value: string | null) => {
     if (value) {
-      router.push(FeedbackTabsMapping[value as FeedbackTabs]);
+      startTransition(() => {
+        router.push(FeedbackTabsMapping[value as FeedbackTabs]);
+      });
     }
   };
 
@@ -70,7 +76,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
             // @ts-expect-error This is correct cause the component is a Link
             href={PATHS.feedback.reflection()}
             value={FeedbackTabs.REFLECTION}
-            leftSection={<IconBrain size={16} />}
+            leftSection={
+              isPending && activeTab === FeedbackTabs.REFLECTION ? (
+                <Loader size="xs" />
+              ) : (
+                <IconBrain size={16} />
+              )
+            }
           >
             {t('tabs', { tab: FeedbackTabs.REFLECTION })}
           </TabsTab>
@@ -79,7 +91,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
             // @ts-expect-error This is correct cause the component is a Link
             href={PATHS.feedback.peerFeedback()}
             value={FeedbackTabs.PEER_FEEDBACK}
-            leftSection={<IconMessage size={16} />}
+            leftSection={
+              isPending && activeTab === FeedbackTabs.PEER_FEEDBACK ? (
+                <Loader size="xs" />
+              ) : (
+                <IconMessage size={16} />
+              )
+            }
           >
             {t('tabs', { tab: FeedbackTabs.PEER_FEEDBACK })}
           </TabsTab>
@@ -88,12 +106,46 @@ export default function Template({ children }: { children: React.ReactNode }) {
             // @ts-expect-error This is correct cause the component is a Link
             href={PATHS.feedback.history()}
             value={FeedbackTabs.HISTORY}
-            leftSection={<IconHistory size={16} />}
+            leftSection={
+              isPending && activeTab === FeedbackTabs.HISTORY ? (
+                <Loader size="xs" />
+              ) : (
+                <IconHistory size={16} />
+              )
+            }
           >
             {t('tabs', { tab: FeedbackTabs.HISTORY })}
           </TabsTab>
         </TabsList>
-        <Container size="lg" py="xl">
+        <Container size="lg" py="xl" pos="relative">
+          {isPending && (
+            <Transition
+              mounted={isPending}
+              transition="fade"
+              duration={200}
+              timingFunction="ease"
+            >
+              {(styles) => (
+                <div
+                  style={{
+                    ...styles,
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'rgba(255, 255, 255, 0.7)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1,
+                  }}
+                >
+                  <Loader size="md" />
+                </div>
+              )}
+            </Transition>
+          )}
           {children}
         </Container>
       </Tabs>

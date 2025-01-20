@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTransition } from 'react';
 
 import {
   Container,
@@ -9,6 +10,8 @@ import {
   Tabs,
   TabsList,
   TabsTab,
+  Transition,
+  Loader,
 } from '@mantine/core';
 import {
   IconTarget,
@@ -41,6 +44,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const [activeTab, setActiveTab] = useState<GrowthTabs>(GrowthTabs.PRACTICE);
+  const [isPending, startTransition] = useTransition();
   const t = useTranslations('app:growth.Shell');
 
   useEffect(() => {
@@ -56,7 +60,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   const handleTabChange = (value: string | null) => {
     if (value) {
-      router.push(GrowthTabsMapping[value as GrowthTabs]);
+      startTransition(() => {
+        router.push(GrowthTabsMapping[value as GrowthTabs]);
+      });
     }
   };
 
@@ -77,7 +83,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
             // @ts-expect-error This is correct cause the component is a Link
             href={GrowthTabsMapping[GrowthTabs.CAREER_PROGRESSION]}
             value={GrowthTabs.CAREER_PROGRESSION}
-            leftSection={<IconRocket size={16} />}
+            leftSection={
+              isPending && activeTab === GrowthTabs.CAREER_PROGRESSION ? (
+                <Loader size="xs" />
+              ) : (
+                <IconRocket size={16} />
+              )
+            }
           >
             {t('tabs', { tab: GrowthTabs.CAREER_PROGRESSION })}
           </TabsTab>
@@ -86,7 +98,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
             // @ts-expect-error This is correct cause the component is a Link
             href={GrowthTabsMapping[GrowthTabs.LEARNING]}
             value={GrowthTabs.LEARNING}
-            leftSection={<IconBulb size={16} />}
+            leftSection={
+              isPending && activeTab === GrowthTabs.LEARNING ? (
+                <Loader size="xs" />
+              ) : (
+                <IconBulb size={16} />
+              )
+            }
           >
             {t('tabs', { tab: GrowthTabs.LEARNING })}
           </TabsTab>
@@ -95,7 +113,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
             // @ts-expect-error This is correct cause the component is a Link
             href={GrowthTabsMapping[GrowthTabs.PRACTICE]}
             value={GrowthTabs.PRACTICE}
-            leftSection={<IconTarget size={16} />}
+            leftSection={
+              isPending && activeTab === GrowthTabs.PRACTICE ? (
+                <Loader size="xs" />
+              ) : (
+                <IconTarget size={16} />
+              )
+            }
           >
             {t('tabs', { tab: GrowthTabs.PRACTICE })}
           </TabsTab>
@@ -104,12 +128,46 @@ export default function Template({ children }: { children: React.ReactNode }) {
             // @ts-expect-error This is correct cause the component is a Link
             href={GrowthTabsMapping[GrowthTabs.ACHIEVEMENTS]}
             value={GrowthTabs.ACHIEVEMENTS}
-            leftSection={<IconTrophy size={16} />}
+            leftSection={
+              isPending && activeTab === GrowthTabs.ACHIEVEMENTS ? (
+                <Loader size="xs" />
+              ) : (
+                <IconTrophy size={16} />
+              )
+            }
           >
             {t('tabs', { tab: GrowthTabs.ACHIEVEMENTS })}
           </TabsTab>
         </TabsList>
-        <Container size="lg" py="xl">
+        <Container size="lg" py="xl" pos="relative">
+          {isPending && (
+            <Transition
+              mounted={isPending}
+              transition="fade"
+              duration={200}
+              timingFunction="ease"
+            >
+              {(styles) => (
+                <div
+                  style={{
+                    ...styles,
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'rgba(255, 255, 255, 0.7)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1,
+                  }}
+                >
+                  <Loader size="md" />
+                </div>
+              )}
+            </Transition>
+          )}
           {children}
         </Container>
       </Tabs>
