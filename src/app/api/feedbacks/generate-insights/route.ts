@@ -8,11 +8,6 @@ export const maxDuration = 60;
 
 export async function POST(req: Request) {
   try {
-    const webhookSecret = req.headers.get('webhook-secret');
-    if (webhookSecret !== process.env.SUPABASE_WEBHOOK_SECRET) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const payload = await req.json();
     const userId = payload.record.to_user_id || payload.record.user_id;
 

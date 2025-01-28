@@ -4,6 +4,10 @@ import { getMessages } from 'next-intl/server';
 
 import { AddFeedbackForm } from './_components';
 
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
+
 export default async function Page() {
   const messages = await getMessages();
   const selectedMessages = pick(messages, [
