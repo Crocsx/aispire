@@ -2,10 +2,9 @@ import { NextResponse } from 'next/server';
 
 import { processUserFeedback } from './process-feedback.action';
 
-// Modern way to configure route segment
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
-export const maxDuration = 300; // 5 minutes timeout
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
   try {

@@ -1,20 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <!-- Head -->
-  <circle cx="50" cy="40" r="20" fill="#4CAF50" />
+  <!-- Background Circle (Subtle, with alpha transparency) -->
+  <circle cx="50" cy="50" r="45" fill="currentColor" opacity="0.1"/>
   
-  <!-- Eyes -->
-  <circle cx="43" cy="37" r="3" fill="#FFFFFF" />
-  <circle cx="57" cy="37" r="3" fill="#FFFFFF" />
+  <!-- Growth Tree (Elegant and Minimalist) -->
+  <path d="M50 85V55M50 55L35 40M50 55L65 40" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="50" cy="30" r="10" fill="currentColor" opacity="0.8"/>
   
-  <!-- Smile -->
-  <path d="M43 45 Q50 52 57 45" stroke="#FFFFFF" stroke-width="2" fill="none" />
+  <!-- AI Chip (Modern and Clean) -->
+  <rect x="40" y="65" width="20" height="20" rx="5" fill="currentColor" opacity="0.6"/>
+  <path d="M45 70V80M55 70V80M50 70V80" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
   
-  <!-- Body -->
-  <rect x="35" y="60" width="30" height="25" rx="5" fill="#4CAF50" />
-  
-  <!-- Antennas -->
-  <line x1="40" y1="25" x2="30" y2="10" stroke="#4CAF50" stroke-width="3" />
-  <circle cx="30" cy="10" r="3" fill="#4CAF50" />
-  <line x1="60" y1="25" x2="70" y2="10" stroke="#4CAF50" stroke-width="3" />
-  <circle cx="70" cy="10" r="3" fill="#4CAF50" />
+  <!-- Sparkle (Subtle and Elegant) -->
+  <path d="M70 20L75 15L80 20L75 25Z" fill="currentColor" opacity="0.6"/>
+  <path d="M25 70L30 65L35 70L30 75Z" fill="currentColor" opacity="0.6"/>
 </svg>

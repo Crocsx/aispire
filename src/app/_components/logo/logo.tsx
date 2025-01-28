@@ -18,14 +18,14 @@ export const Logo = ({ title }: { title?: string }) => {
             href={PATHS.landing()}
             style={{ color: 'inherit', textDecoration: 'inherit' }}
           >
-            <Flex align="flex-end">
+            <Flex align="center" gap="xs">
               {logo({
                 width: 32,
                 height: 48,
                 fill: 'var(--mantine-color-primary-6)',
               })}
               {title && (
-                <Text fw="bold" tt="uppercase" mb="sm">
+                <Text fw="bold" tt="uppercase">
                   {title}
                 </Text>
               )}

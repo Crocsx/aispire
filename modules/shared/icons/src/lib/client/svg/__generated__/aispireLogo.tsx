@@ -6,18 +6,38 @@ const SvgAispireLogo = (props: SVGProps<SVGSVGElement>) => (
     width="1.5rem"
     height="1.5rem"
     viewBox="0 0 100 100"
-    fill="currentColor"
     {...props}
   >
-    <circle cx={50} cy={40} r={20} />
-    <circle cx={43} cy={37} r={3} fill="#FFF" />
-    <circle cx={57} cy={37} r={3} fill="#FFF" />
-    <path fill="none" stroke="#FFF" strokeWidth={2} d="M43 45q7 7 14 0" />
-    <rect width={30} height={25} x={35} y={60} fill="currentColor" rx={5} />
-    <path stroke="currentColor" strokeWidth={3} d="M40 25 30 10" />
-    <circle cx={30} cy={10} r={3} fill="currentColor" />
-    <path stroke="currentColor" strokeWidth={3} d="m60 25 10-15" />
-    <circle cx={70} cy={10} r={3} fill="currentColor" />
+    <circle cx={50} cy={50} r={45} fill="currentColor" opacity={0.1} />
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeWidth={4}
+      d="M50 85V55m0 0L35 40m15 15 15-15"
+      opacity={0.8}
+    />
+    <circle cx={50} cy={30} r={10} fill="currentColor" opacity={0.8} />
+    <rect
+      width={20}
+      height={20}
+      x={40}
+      y={65}
+      fill="currentColor"
+      opacity={0.6}
+      rx={5}
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeWidth={2}
+      d="M45 70v10m10-10v10m-5-10v10"
+      opacity={0.8}
+    />
+    <path
+      fill="currentColor"
+      d="m70 20 5-5 5 5-5 5ZM25 70l5-5 5 5-5 5Z"
+      opacity={0.6}
+    />
   </svg>
 );
 export default SvgAispireLogo;
