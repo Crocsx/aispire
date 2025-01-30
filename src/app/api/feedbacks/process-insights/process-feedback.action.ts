@@ -1,7 +1,6 @@
 import OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
 import { MessagesPage } from 'openai/resources/beta/threads/messages';
-import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 
 import { createOpenAI } from '~aispire/external/openai/server';
@@ -31,6 +30,7 @@ async function parseOpenAIResponse<T>(
   schema: z.ZodSchema<T>,
   additionalData: Record<string, unknown> = {}
 ): Promise<T> {
+  console.log('[parseOpenAIResponse] Starting to parse response');
   const message = messages.data[0];
 
   const messageContent = message?.content[0] as {
@@ -39,16 +39,23 @@ async function parseOpenAIResponse<T>(
   };
 
   if (!messageContent?.text?.value) {
+    console.error('[parseOpenAIResponse] No content in response');
     throw new Error('No content in response');
   }
 
   let parsedJson;
   try {
+    console.log(
+      '[parseOpenAIResponse] Raw response:',
+      messageContent.text.value
+    );
     parsedJson = JSON.parse(messageContent.text.value);
-  } catch {
+  } catch (error) {
+    console.error('[parseOpenAIResponse] JSON parse error:', error);
     parsedJson = {};
   }
 
+  console.log('[parseOpenAIResponse] Parsed JSON:', parsedJson);
   return schema.parse({
     ...additionalData,
     ...parsedJson,
@@ -57,7 +64,13 @@ async function parseOpenAIResponse<T>(
 
 export const generateInsightPrompt = (
   feedbacksAndReflections: { output_summary: string; type: string }[]
-) => `
+) => {
+  console.log(
+    '[generateInsightPrompt] Generating prompt with',
+    feedbacksAndReflections.length,
+    'items'
+  );
+  return `
 Here the feedback and reflection I received:
 
    ${feedbacksAndReflections.map(
@@ -69,6 +82,7 @@ Here the feedback and reflection I received:
    
    Please wait for instruction before replying.
 `;
+};
 
 async function generateInsightOverview({
   openai,
@@ -81,6 +95,7 @@ async function generateInsightOverview({
   assistant: { id: string };
   userId: string;
 }) {
+  console.log('[generateInsightOverview] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistant.id,
     instructions: INSIGHT_OVERVIEW_ASSISTANT_INSTRUCTIONS,
@@ -96,6 +111,7 @@ async function generateInsightOverview({
     ),
   });
 
+  console.log('[generateInsightOverview] Run completed, fetching messages');
   const message = await openai.beta.threads.messages.list(run.thread_id);
 
   const insightOverview = await parseOpenAIResponse(
@@ -104,6 +120,7 @@ async function generateInsightOverview({
     { user_id: userId }
   );
 
+  console.log('[generateInsightOverview] Successfully generated overview');
   return insightOverview;
 }
 
@@ -118,6 +135,7 @@ async function generateInsightValues({
   assistant: { id: string };
   userId: string;
 }) {
+  console.log('[generateInsightValues] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistant.id,
     instructions: INSIGHT_VALUES_ASSISTANT_INSTRUCTIONS,
@@ -138,6 +156,7 @@ async function generateInsightValues({
     ),
   });
 
+  console.log('[generateInsightValues] Run completed, fetching messages');
   const message = await openai.beta.threads.messages.list(run.thread_id);
 
   const insightValues = await parseOpenAIResponse(
@@ -146,6 +165,7 @@ async function generateInsightValues({
     { user_id: userId }
   );
 
+  console.log('[generateInsightValues] Successfully generated values');
   return insightValues;
 }
 
@@ -162,6 +182,7 @@ async function generateInsightSkills({
   userId: string;
   runId: string;
 }) {
+  console.log('[generateInsightSkills] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistant.id,
     instructions: INSIGHT_SKILLS_ASSISTANT_INSTRUCTIONS,
@@ -176,6 +197,7 @@ async function generateInsightSkills({
     ),
   });
 
+  console.log('[generateInsightSkills] Run completed, fetching messages');
   const message = await openai.beta.threads.messages.list(run.thread_id);
 
   const insightSkills = await parseOpenAIResponse(
@@ -184,6 +206,7 @@ async function generateInsightSkills({
     { user_id: userId, run_id: runId }
   );
 
+  console.log('[generateInsightSkills] Successfully generated skills');
   return insightSkills;
 }
 
@@ -200,6 +223,7 @@ async function generateInsightImprovements({
   userId: string;
   runId: string;
 }) {
+  console.log('[generateInsightImprovements] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistant.id,
     instructions: INSIGHT_IMPROVEMENTS_ASSISTANT_INSTRUCTIONS,
@@ -217,6 +241,7 @@ async function generateInsightImprovements({
     ),
   });
 
+  console.log('[generateInsightImprovements] Run completed, fetching messages');
   const message = await openai.beta.threads.messages.list(run.thread_id);
 
   const insightImprovements = await parseOpenAIResponse(
@@ -225,10 +250,14 @@ async function generateInsightImprovements({
     { user_id: userId, run_id: runId }
   );
 
+  console.log(
+    '[generateInsightImprovements] Successfully generated improvements'
+  );
   return insightImprovements;
 }
 
-async function processInsights(processId: string, userId: string) {
+export async function processInsights(processId: string, userId: string) {
+  console.log('[processInsights] Starting process for user:', userId);
   try {
     const supabase = await createClient();
     const openai = await createOpenAI();
@@ -239,6 +268,7 @@ async function processInsights(processId: string, userId: string) {
     const twelveMonthsAgo = new Date();
     twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
 
+    console.log('[processInsights] Fetching feedback data');
     // Fetch last 12 months of data (limited to 30 records) for insight generation
     const [allReflectionsAndFeedbacks] = await Promise.all([
       supabase
@@ -251,6 +281,12 @@ async function processInsights(processId: string, userId: string) {
     ]);
 
     const feedbackData = allReflectionsAndFeedbacks.data || [];
+    console.log(
+      '[processInsights] Found',
+      feedbackData.length,
+      'feedback items'
+    );
+
     const params = {
       openai,
       thread,
@@ -264,6 +300,7 @@ async function processInsights(processId: string, userId: string) {
       content: generateInsightPrompt(feedbackData),
     });
 
+    console.log('[processInsights] Starting insight generation sequence');
     const insightRecap = await generateInsightOverview(params);
     const { error: e } = await supabase
       .from('insights_overview')
@@ -284,13 +321,14 @@ async function processInsights(processId: string, userId: string) {
       .insert(improvements);
     if (ei) throw ei;
 
+    console.log('[processInsights] All insights generated successfully');
     // Update process status to completed
     await supabase
       .from('insights_processes')
       .update({ status: 'completed' })
       .eq('id', processId);
   } catch (error) {
-    console.log(error);
+    console.error('[processInsights] Error:', error);
     const supabase = await createClient();
     // Update process status to failed
     await supabase
@@ -303,25 +341,4 @@ async function processInsights(processId: string, userId: string) {
 
     throw error;
   }
-}
-
-export async function processUserFeedback(userId: string) {
-  const processId = uuidv4();
-  const supabase = await createClient();
-
-  // Create process record
-  await supabase.from('insights_processes').insert({
-    id: processId,
-    user_id: userId,
-    status: 'processing',
-  });
-
-  // Start processing in background
-  processInsights(processId, userId).catch(console.error);
-
-  return {
-    processId,
-    userId,
-    status: 'processing',
-  };
 }

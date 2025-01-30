@@ -29,6 +29,7 @@
     "@tiptap/extension-link": "^2.11.2",
     "@tiptap/react": "^2.11.2",
     "@tiptap/starter-kit": "^2.11.2",
+    "@upstash/qstash": "^2.7.20",
     "@vercel/analytics": "^1.4.1",
     "@vercel/postgres": "^0.10.0",
     "cookies-next": "^5.1.0",
