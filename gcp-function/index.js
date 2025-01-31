@@ -12,17 +12,27 @@ functions.http('processInsightsFunction', async (req, res) => {
 
   try {
     const { processId, userId } = req.body;
-    console.log(`Processing insights for user ${userId}`);
+    console.log(`Starting processing for user ${userId}`);
 
-    // Process insights
-    await processInsights(processId, userId);
+    // Return immediately
+    res.status(200).json({
+      success: true,
+      message: 'Processing started',
+      processId,
+    });
+
+    // Continue processing after response
+    // Using .catch to handle any errors in the background process
+    await processInsights(processId, userId).catch((error) => {
+      console.error(`Background processing failed for ${processId}:`, error);
+    });
 
     console.log(`Processing completed for user ${userId}`);
-    res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Error processing insights:', error);
-    res
-      .status(500)
-      .json({ error: 'Processing failed', details: error.message });
+    console.error('Error initiating process:', error);
+    res.status(500).json({
+      error: 'Failed to start processing',
+      details: error.message,
+    });
   }
 });
