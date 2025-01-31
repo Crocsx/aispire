@@ -1,10 +1,7 @@
-import { Client } from '@upstash/qstash';
 import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 
 import { createClient } from '~aispire/external/supabase/server';
-
-const client = new Client({ token: process.env.QSTASH_TOKEN! });
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
@@ -32,20 +29,14 @@ export async function POST(req: Request) {
       status: 'processing',
     });
 
-    // Get the base URL correctly in Next.js 15
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000';
-
-    // Queue the background job
-    await client.publishJSON({
-      url: `${baseUrl}/api/feedbacks/process-insights`,
-      body: {
-        processId,
-        userId,
-      },
-      retries: 3,
-    });
+    fetch(
+      'https://asia-northeast1-aispire.cloudfunctions.net/processInsightsFunction',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ processId, userId }),
+      }
+    );
 
     return NextResponse.json({
       success: true,

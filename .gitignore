@@ -46,8 +46,8 @@ Thumbs.db
 out
 
 firebase-key.json
-.env.*
-.env
+**/.env.*
+**/.env
 .vercel
 vite.config.*.timestamp*
 vitest.config.*.timestamp*

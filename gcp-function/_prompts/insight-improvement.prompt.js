@@ -1,4 +1,5 @@
-export const INSIGHT_IMPROVEMENTS_ASSISTANT_INSTRUCTIONS = `
+module.exports = {
+  INSIGHT_IMPROVEMENTS_ASSISTANT_INSTRUCTIONS: `
 You are an AI tasked with providing actionable improvement points for a user based on their profile assessment. Consider the user's strengths, areas for improvement, and career development goals to generate meaningful suggestions.
 
 Instructions:
@@ -31,4 +32,5 @@ Expected Output Format:
       ]
     }
   ]
-}`;
+}`,
+};

@@ -1,4 +1,5 @@
-export const INSIGHT_VALUES_ASSISTANT_INSTRUCTIONS = `
+module.exports = {
+  INSIGHT_VALUES_ASSISTANT_INSTRUCTIONS: `
 Based on the previous feedback and reflection, now do an analysis specifically in alignment with the following company values:
 
 Be Open: Embrace diversity, express thoughts openly, and respect other people's opinions.
@@ -26,4 +27,5 @@ Expected Output Format:
   "stay_updated_details": "The user demonstrates a solid effort to stay informed about industry trends and updates but could proactively share insights with the team more often.",
   "achieve_together_rate": 5,
   "achieve_together_details": "The user excels at collaborating with others, aligning with team goals, and driving collective success.",
-}`;
+}`,
+};

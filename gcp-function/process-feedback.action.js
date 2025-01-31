@@ -1,42 +1,164 @@
-import OpenAI from 'openai';
-import { zodResponseFormat } from 'openai/helpers/zod';
-import { MessagesPage } from 'openai/resources/beta/threads/messages';
-import { z } from 'zod';
+const { createClient } = require('@supabase/supabase-js');
+const OpenAI = require('openai');
+const { zodResponseFormat } = require('openai/helpers/zod');
+const { z } = require('zod');
 
-import { createOpenAI } from '~aispire/external/openai/server';
-import { createClient } from '~aispire/external/supabase/server';
-import {
-  CollaborationSchema,
-  CommunicationSchema,
-  InsightImprovementsInputSchema,
-  InsightOverviewInputSchema,
-  InsightSkillsInputSchema,
-  InsightValuesInputSchema,
-  LeadershipSchema,
-  ProblemSolvingSchema,
-} from '~aispire/shared/schema';
-
-import { getOrCreateAssistant } from 'src/assistants';
-
-import {
+const {
   INSIGHT_IMPROVEMENTS_ASSISTANT_INSTRUCTIONS,
   INSIGHT_OVERVIEW_ASSISTANT_INSTRUCTIONS,
   INSIGHT_SKILLS_ASSISTANT_INSTRUCTIONS,
   INSIGHT_VALUES_ASSISTANT_INSTRUCTIONS,
-} from './_prompts';
+} = require('./_prompts/index.js');
 
-async function parseOpenAIResponse<T>(
-  messages: MessagesPage,
-  schema: z.ZodSchema<T>,
-  additionalData: Record<string, unknown> = {}
-): Promise<T> {
+const InsightOverviewInputSchema = z.object({
+  user_id: z.string().uuid(),
+  profile_summary: z.string().nullable(),
+  strengths: z.array(z.string()).nullable(),
+  areas_for_improvement: z.array(z.string()).nullable(),
+  key_characteristics: z.array(z.string()).nullable(),
+  critical_focus_areas: z.array(z.string()).nullable(),
+});
+
+const InsightImprovementsInputSchema = z.object({
+  user_id: z.string().uuid(),
+  run_id: z.string().uuid(),
+  improvements: z.array(
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      actions: z.array(z.string()),
+    })
+  ),
+});
+
+const InsightImprovementsSchema = z.object({
+  id: z.string().uuid(),
+  user_id: z.string().uuid(),
+  run_id: z.string().uuid(),
+  improvements: z.array(
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      actions: z.array(z.string()),
+    })
+  ),
+  created_at: z
+    .string()
+    .datetime()
+    .default(() => new Date().toISOString()),
+});
+
+const InsightValuesInputSchema = z.object({
+  user_id: z.string().uuid(),
+  be_open_rate: z.number().int().min(0).max(100).nullable(),
+  be_bold_rate: z.number().int().min(0).max(100).nullable(),
+  move_faster_rate: z.number().int().min(0).max(100).nullable(),
+  stay_updated_rate: z.number().int().min(0).max(100).nullable(),
+  achieve_together_rate: z.number().int().min(0).max(100).nullable(),
+  be_open_details: z.string().nullable(),
+  be_bold_details: z.string().nullable(),
+  move_faster_details: z.string().nullable(),
+  stay_updated_details: z.string().nullable(),
+  achieve_together_details: z.string().nullable(),
+});
+
+const getOrCreateAssistant = async () => {
+  const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
+  // Try to fetch existing assistant
+  const { data, error } = await supabase
+    .from('assistants')
+    .select('id')
+    .eq('name', 'Reflection Coach')
+    .single();
+
+  // If not existing row, create new assistant
+  if (error && error.code === 'PGRST116') {
+    const assistant = await openai.beta.assistants.create({
+      name: 'Reflection Coach',
+      instructions: `
+        You are a Reflection Coach. Guide users through self-reflection with an emphasis on personal growth and alignment with company values.
+        Keep your responses concise, polite, and positive. Always respond in the same language as the user.
+        Encourage reflection on achievements, challenges, and areas for improvement while maintaining a forward-looking and constructive tone.
+        Focus on helping the user align their personal experiences with their growth goals and AnyMind's values of openness, boldness, speed, continuous learning, and collaboration.
+        Stay within the theme of personal development and avoid unnecessary tangents. 
+      `,
+      tools: [],
+      model: 'gpt-4o-2024-08-06',
+    });
+
+    await supabase.from('assistants').insert([
+      {
+        name: 'Reflection Coach',
+        id: assistant.id,
+      },
+    ]);
+
+    return assistant;
+  }
+
+  if (error) {
+    throw error;
+  }
+
+  // Retrieve existing assistant
+  return await openai.beta.assistants.retrieve(data.id);
+};
+
+const SkillRatingSchema = z.object({
+  rating: z.number(),
+  details: z.string(),
+});
+
+const CommunicationSchema = z.object({
+  clarity: SkillRatingSchema,
+  listening: SkillRatingSchema,
+});
+
+const ProblemSolvingSchema = z.object({
+  critical_thinking: SkillRatingSchema,
+  creativity: SkillRatingSchema,
+});
+
+const CollaborationSchema = z.object({
+  team_contribution: SkillRatingSchema,
+  conflict_resolution: SkillRatingSchema,
+});
+
+const LeadershipSchema = z.object({
+  initiative: SkillRatingSchema,
+  motivation: SkillRatingSchema,
+});
+
+const InsightSkillsInputSchema = z.object({
+  user_id: z.string().uuid(),
+  communication: CommunicationSchema,
+  problem_solving: ProblemSolvingSchema,
+  collaboration: CollaborationSchema,
+  leadership: LeadershipSchema,
+});
+
+const InsightSkillsSchema = z.object({
+  id: z.string().uuid(),
+  user_id: z.string().uuid(),
+  communication: CommunicationSchema,
+  problem_solving: ProblemSolvingSchema,
+  collaboration: CollaborationSchema,
+  leadership: LeadershipSchema,
+  created_at: z.string().datetime(),
+});
+
+async function parseOpenAIResponse(messages, schema, additionalData = {}) {
   console.log('[parseOpenAIResponse] Starting to parse response');
   const message = messages.data[0];
 
-  const messageContent = message?.content[0] as {
-    type: 'text';
-    text: { value: string };
-  };
+  const messageContent = message?.content[0];
 
   if (!messageContent?.text?.value) {
     console.error('[parseOpenAIResponse] No content in response');
@@ -62,9 +184,7 @@ async function parseOpenAIResponse<T>(
   });
 }
 
-export const generateInsightPrompt = (
-  feedbacksAndReflections: { output_summary: string; type: string }[]
-) => {
+const generateInsightPrompt = (feedbacksAndReflections) => {
   console.log(
     '[generateInsightPrompt] Generating prompt with',
     feedbacksAndReflections.length,
@@ -84,17 +204,7 @@ Here the feedback and reflection I received:
 `;
 };
 
-async function generateInsightOverview({
-  openai,
-  thread,
-  assistant,
-  userId,
-}: {
-  openai: OpenAI;
-  thread: { id: string };
-  assistant: { id: string };
-  userId: string;
-}) {
+async function generateInsightOverview({ openai, thread, assistant, userId }) {
   console.log('[generateInsightOverview] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistant.id,
@@ -124,17 +234,7 @@ async function generateInsightOverview({
   return insightOverview;
 }
 
-async function generateInsightValues({
-  openai,
-  thread,
-  assistant,
-  userId,
-}: {
-  openai: OpenAI;
-  thread: { id: string };
-  assistant: { id: string };
-  userId: string;
-}) {
+async function generateInsightValues({ openai, thread, assistant, userId }) {
   console.log('[generateInsightValues] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistant.id,
@@ -175,12 +275,6 @@ async function generateInsightSkills({
   assistant,
   userId,
   runId,
-}: {
-  openai: OpenAI;
-  thread: { id: string };
-  assistant: { id: string };
-  userId: string;
-  runId: string;
 }) {
   console.log('[generateInsightSkills] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
@@ -216,12 +310,6 @@ async function generateInsightImprovements({
   assistant,
   userId,
   runId,
-}: {
-  openai: OpenAI;
-  thread: { id: string };
-  assistant: { id: string };
-  userId: string;
-  runId: string;
 }) {
   console.log('[generateInsightImprovements] Starting for user:', userId);
   const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
@@ -256,11 +344,16 @@ async function generateInsightImprovements({
   return insightImprovements;
 }
 
-export async function processInsights(processId: string, userId: string) {
+async function processInsights(processId, userId) {
   console.log('[processInsights] Starting process for user:', userId);
   try {
-    const supabase = await createClient();
-    const openai = await createOpenAI();
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    );
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
     const assistant = await getOrCreateAssistant();
     const thread = await openai.beta.threads.create();
 
@@ -329,7 +422,10 @@ export async function processInsights(processId: string, userId: string) {
       .eq('id', processId);
   } catch (error) {
     console.error('[processInsights] Error:', error);
-    const supabase = await createClient();
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    );
     // Update process status to failed
     await supabase
       .from('insights_processes')
@@ -342,3 +438,19 @@ export async function processInsights(processId: string, userId: string) {
     throw error;
   }
 }
+
+module.exports = {
+  processInsights,
+  generateInsightPrompt,
+  InsightOverviewInputSchema,
+  InsightImprovementsInputSchema,
+  InsightImprovementsSchema,
+  InsightValuesInputSchema,
+  CommunicationSchema,
+  ProblemSolvingSchema,
+  CollaborationSchema,
+  LeadershipSchema,
+  InsightSkillsInputSchema,
+  InsightSkillsSchema,
+  getOrCreateAssistant,
+};

@@ -1,4 +1,5 @@
-export const INSIGHT_OVERVIEW_ASSISTANT_INSTRUCTIONS = `
+module.exports = {
+  INSIGHT_OVERVIEW_ASSISTANT_INSTRUCTIONS: `
 You are an AI tasked with generating a professional and insightful profile summary for a user based on the feedback and reflections provided. Use the supplied data to create the following sections: 
 
 1. **Profile Summary**: A concise overview of the user's professional and personal qualities.
@@ -30,4 +31,5 @@ Reflection: "I feel confident in my technical knowledge but struggle with presen
 
 Generate output based on this input. Provide actionable and motivating content.
 
-`;
+`,
+};

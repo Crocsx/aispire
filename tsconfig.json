@@ -25,7 +25,8 @@
     ".next/types/**/*.ts",
     "dist/aispire/.next/types/**/*.ts",
     "next-env.d.ts",
-    "modules/common/auth/src/lib/client/index.ts"
+    "modules/common/auth/src/lib/client/index.ts",
+    "gcp-function/process-feedback.action.js"
   ],
   "extends": "./tsconfig.base.json"
 }

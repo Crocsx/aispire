@@ -1,4 +1,5 @@
-export const INSIGHT_SKILLS_ASSISTANT_INSTRUCTIONS = `
+module.exports = {
+  INSIGHT_SKILLS_ASSISTANT_INSTRUCTIONS: `
 You are an AI tasked with analyzing a user's core qualities based on peer feedback and self-reflection. Use the supplied data to assess their performance in the following key areas:
 
 Communication
@@ -70,4 +71,5 @@ Expected Output Format:
 The response should be a valid JSON object with:
 - Numerical ratings between 0-100 for each skill subcategory
 - A descriptive string explaining the rating and performance for that skill
-`;
+`,
+};
